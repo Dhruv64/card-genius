@@ -93,15 +93,3 @@ model Card {
 
     @@index([userId])
 }
-
-// model Field {
-//     id     String  @id @default(uuid())
-//     type   String
-//     icon   String
-//     entry  String
-//     link   String?
-//     Card   Card?   @relation(fields: [cardId], references: [id])
-//     cardId String?
-
-//     @@index([cardId])
-// }

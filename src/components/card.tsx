@@ -1,4 +1,3 @@
-// @ts-ignore
 import {
     Card,
     Image,
@@ -7,8 +6,10 @@ import {
     createStyles,
     rem,
     CardSection,
-    SimpleGrid, Box, Stack
+    SimpleGrid, Box, Stack, ThemeIcon
 } from '@mantine/core';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 
 const useStyles = createStyles((theme) => ({
@@ -39,14 +40,10 @@ const useStyles = createStyles((theme) => ({
         color: theme.white,
     },
 
-    // icon: {
-    //     marginRight: theme.spacing.md,
-    //     backgroundImage:
-
-    //         `linear-gradient(135deg, ${theme.colors[theme.primaryColor][4]} 0%, ${theme.colors[theme.primaryColor][6]
-    //         } 100%)`,
-    //     backgroundColor: 'transparent',
-    // },
+    icon: {
+        marginRight: theme.spacing.md,
+        backgroundImage: theme.colors.blue,
+    },
 
     type: {
         color: theme.colors.gray[6],
@@ -91,7 +88,7 @@ export default function BadgeCard({ image, name, title, company, logo, phone, em
                             return null
                         } else return (
                             <Card.Section>
-                                <Image src={image} height={300} alt=''/>
+                                <Image src={image} height={300} alt='' />
                             </Card.Section>
                         )
                     })()}
@@ -129,7 +126,7 @@ export default function BadgeCard({ image, name, title, company, logo, phone, em
                             {/*FIELDS*/}
                             <SimpleGrid cols={2} breakpoints={[{ maxWidth: 755, cols: 1 }]}>
                                 <Box
-                                    sx={(theme) => ({
+                                    sx={(theme: any) => ({
                                         padding: theme.spacing.sm,
                                         borderRadius: theme.radius.md,
                                         backgroundColor: theme.white,
@@ -141,10 +138,9 @@ export default function BadgeCard({ image, name, title, company, logo, phone, em
                                                 return null
                                             } else return (
                                                 <div className='flex'>
-                                                    {/* <ThemeIcon size={40} radius="md" className={classes.icon}>
-                                                        <Icon size="1.5rem" />
+                                                    <ThemeIcon size={40} radius="md" className={classes.icon}>
                                                         <FontAwesomeIcon icon={"fa-solid fa-phone"} />
-                                                    </ThemeIcon> */}
+                                                    </ThemeIcon>
 
                                                     <div>
                                                         <Text size="xs" className={classes.type} >
@@ -164,10 +160,9 @@ export default function BadgeCard({ image, name, title, company, logo, phone, em
 
                                                     <div className={cx(classes.wrapper)}>
 
-                                                        {/* <ThemeIcon size={40} radius="md" className={classes.icon}>
-                                                            <Icon size="1.5rem" />
+                                                        <ThemeIcon size={40} radius="md" className={classes.icon}>
                                                             <FontAwesomeIcon icon={"fa-solid fa-at"} />
-                                                        </ThemeIcon> */}
+                                                        </ThemeIcon>
 
                                                         <div>
                                                             <Text size="xs" className={classes.type} >
@@ -186,9 +181,9 @@ export default function BadgeCard({ image, name, title, company, logo, phone, em
                                             } else return (
                                                 <div className={cx(classes.wrapper)}>
 
-                                                    {/* <ThemeIcon size={40} radius="md" className={classes.icon}>
+                                                    <ThemeIcon size={40} radius="md" className={classes.icon}>
                                                         <FontAwesomeIcon icon={"fa-solid fa-map-pin"} />
-                                                    </ThemeIcon> */}
+                                                    </ThemeIcon>
 
                                                     <div>
                                                         <Text size="xs" className={classes.type} >
@@ -206,9 +201,9 @@ export default function BadgeCard({ image, name, title, company, logo, phone, em
                                             } else return (
                                                 <a href={`//${websitelink}`} target="_blank" className='no-underline' >
                                                     <div className={cx(classes.wrapper)}>
-                                                        {/* <ThemeIcon size={40} radius="md" className={classes.icon}>
+                                                        <ThemeIcon size={40} radius="md" className={classes.icon}>
                                                             <FontAwesomeIcon icon={"fa-solid fa-link"} />
-                                                        </ThemeIcon> */}
+                                                        </ThemeIcon>
 
                                                         <div>
                                                             <Text size="xs" className={classes.type} >
@@ -229,9 +224,9 @@ export default function BadgeCard({ image, name, title, company, logo, phone, em
 
                                                     <div className={cx(classes.wrapper)}>
 
-                                                        {/* <ThemeIcon size={40} radius="md" className={classes.icon}>
+                                                        <ThemeIcon size={40} radius="md" className={classes.icon}>
                                                             <FontAwesomeIcon icon={"fa-solid fa-link"} />
-                                                        </ThemeIcon> */}
+                                                        </ThemeIcon>
 
                                                         <div>
                                                             <Text size="xs" className={classes.type} >
@@ -250,9 +245,9 @@ export default function BadgeCard({ image, name, title, company, logo, phone, em
                                             } else return (
                                                 <div className={cx(classes.wrapper)}>
 
-                                                    {/* <ThemeIcon size={40} radius="md" className={classes.icon}>
+                                                    <ThemeIcon size={40} radius="md" className={classes.icon}>
                                                         <FontAwesomeIcon icon={"fa-brands fa-whatsapp"} />
-                                                    </ThemeIcon> */}
+                                                    </ThemeIcon>
 
                                                     <div>
                                                         <Text size="xs" className={classes.type} >
@@ -270,9 +265,9 @@ export default function BadgeCard({ image, name, title, company, logo, phone, em
                                             } else return (
                                                 <div className={cx(classes.wrapper)}>
 
-                                                    {/* <ThemeIcon size={40} radius="md" className={classes.icon}>
+                                                    <ThemeIcon size={40} radius="md" className={classes.icon}>
                                                         <FontAwesomeIcon icon={"fa-brands fa-linkedin-in"} />
-                                                    </ThemeIcon> */}
+                                                    </ThemeIcon>
 
                                                     <div>
                                                         <Text size="xs" className={classes.type} >
@@ -290,9 +285,9 @@ export default function BadgeCard({ image, name, title, company, logo, phone, em
                                             } else return (
                                                 <div className={cx(classes.wrapper)}>
 
-                                                    {/* <ThemeIcon size={40} radius="md" className={classes.icon}>
+                                                    <ThemeIcon size={40} radius="md" className={classes.icon}>
                                                         <FontAwesomeIcon icon={"fa-brands fa-twitter"} />
-                                                    </ThemeIcon> */}
+                                                    </ThemeIcon>
 
                                                     <div>
                                                         <Text size="xs" className={classes.type} >
@@ -310,9 +305,9 @@ export default function BadgeCard({ image, name, title, company, logo, phone, em
                                             } else return (
                                                 <div className={cx(classes.wrapper)}>
 
-                                                    {/* <ThemeIcon size={40} radius="md" className={classes.icon}>
+                                                    <ThemeIcon size={40} radius="md" className={classes.icon}>
                                                         <FontAwesomeIcon icon={"fa-brands fa-instagram"} />
-                                                    </ThemeIcon> */}
+                                                    </ThemeIcon>
 
                                                     <div>
                                                         <Text size="xs" className={classes.type} >
@@ -330,9 +325,9 @@ export default function BadgeCard({ image, name, title, company, logo, phone, em
                                             } else return (
                                                 <div className={cx(classes.wrapper)}>
 
-                                                    {/* <ThemeIcon size={40} radius="md" className={classes.icon}>
+                                                    <ThemeIcon size={40} radius="md" className={classes.icon}>
                                                         <FontAwesomeIcon icon={"fa-brands fa-facebook"} />
-                                                    </ThemeIcon> */}
+                                                    </ThemeIcon>
 
                                                     <div>
                                                         <Text size="xs" className={classes.type} >
@@ -351,9 +346,9 @@ export default function BadgeCard({ image, name, title, company, logo, phone, em
                                             } else return (
                                                 <div className={cx(classes.wrapper)}>
 
-                                                    {/* <ThemeIcon size={40} radius="md" className={classes.icon}>
+                                                    <ThemeIcon size={40} radius="md" className={classes.icon}>
                                                         <FontAwesomeIcon icon={"fa-brands fa-youtube"} />
-                                                    </ThemeIcon> */}
+                                                    </ThemeIcon>
 
                                                     <div>
                                                         <Text size="xs" className={classes.type} >
@@ -371,9 +366,9 @@ export default function BadgeCard({ image, name, title, company, logo, phone, em
                                             } else return (
                                                 <div className={cx(classes.wrapper)}>
 
-                                                    {/* <ThemeIcon size={40} radius="md" className={classes.icon}>
+                                                    <ThemeIcon size={40} radius="md" className={classes.icon}>
                                                         <FontAwesomeIcon icon={"fa-brands fa-github"} />
-                                                    </ThemeIcon> */}
+                                                    </ThemeIcon>
 
                                                     <div>
                                                         <Text size="xs" className={classes.type} >

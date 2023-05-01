@@ -16,6 +16,7 @@ module.exports = {
         paleturquoise: "#a0fff5",
         gray: "#fefefe",
         whitesmoke: "#f1f1f1",
+        primary: "#005b8f"
       },
       fontFamily: { inter: "Inter", inherit: "inherit" },
       borderRadius: { "3xs": "10px", "11xl": "30px" },

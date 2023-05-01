@@ -6,11 +6,11 @@ import { MantineProvider } from '@mantine/core';
 import { api } from "~/utils/api";
 
 //global icon import
-import { library } from '@fortawesome/fontawesome-svg-core';
+import { IconDefinition, library } from '@fortawesome/fontawesome-svg-core';
 import { faAt, faPhone, faMapPin, faLink } from '@fortawesome/free-solid-svg-icons'
 import { faLinkedinIn, faWhatsapp, faFacebook, faYoutube, faTwitter, faGithub, faInstagram} from '@fortawesome/free-brands-svg-icons'
 
-library.add(faAt, faPhone, faMapPin, faLink, faLinkedinIn, faWhatsapp, faFacebook, faYoutube, faTwitter, faGithub, faInstagram )
+library.add(faAt, faPhone, faMapPin, faLink, faLinkedinIn, faWhatsapp, faFacebook, faYoutube, faTwitter, faGithub, faInstagram as IconDefinition)
 
 
 import "~/styles/globals.css";
