@@ -78,7 +78,7 @@ const CardSharePage: NextPage<{ id: string }> = ({ id }) => {
     const { data } = api.cards.getCardById.useQuery({
         id,
     });
-    const url = `localhost.3000/preview/${data?.id}`
+    const url = `cardgenius.me/preview/${data?.id}`
 
     const { data: session } = useSession()
 

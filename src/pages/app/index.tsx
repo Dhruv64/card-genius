@@ -1,4 +1,3 @@
-
 import React from 'react'
 import { useSession } from 'next-auth/react';
 import Topnav from '~/components/topnav';
@@ -64,9 +63,6 @@ const index = () => {
       <Card key={item.name} p={'xs'} radius="md" component="a" href={`app/share/${item.id}`} className={classes.card} >
 
         <Image src={item.imgUrl} width={200} height={180} />
-        {/* <Text color="dimmed" size="xs" transform="uppercase" weight={700} mt="md">
-        {item.date}
-      </Text> */}
         <Text className={classes.title} mt={5}>
           {item.name}
         </Text>

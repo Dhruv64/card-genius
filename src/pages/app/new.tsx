@@ -3,7 +3,7 @@ import { IoArrowBack } from "react-icons/io5";
 import { useForm } from 'react-hook-form';
 import { useState } from 'react';
 import { api } from '~/utils/api';
-import {message} from "antd"
+import { message, Button } from "antd"
 // import Link as nextLink from 'next/link';
 // Selectors Import
 import { createStyles, Card, Text, SimpleGrid, UnstyledButton, Anchor, Group, rem, } from '@mantine/core';
@@ -11,6 +11,7 @@ import { CgWebsite } from "react-icons/cg";
 import { BrandInstagram, BrandLinkedin, BrandTwitter, BrandWhatsapp, BrandYoutube, BrandFacebook, BrandGithub, Mail, Link, MapPin, Phone, FileDescription, BrandSnapchat, BrandTiktok, BrandPaypal, BrandCashapp, CalendarEvent, BrandDiscord, BrandTwitch, BrandTelegram, BrandSkype, BrandWechat, DeviceNintendo } from 'tabler-icons-react';
 import { MouseEvent } from 'react';
 import { useRouter } from 'next/router';
+import { isError } from '@tanstack/react-query';
 // Selectors Part-1 Start
 
 
@@ -70,7 +71,21 @@ type FormValues = {
 
 const New = () => {
     const router = useRouter()
-    const { mutate } = api.cards.createCard.useMutation();
+    const { mutate, isLoading: isCreating } = api.cards.createCard.useMutation({
+        onSuccess: () => {
+            message.success('Card Created!')
+            router.push(`/app/`)
+        },
+        onError: (e) => {
+            const errorMessage = e.data?.zodError?.fieldErrors.content;
+            if (errorMessage && errorMessage[0]) {
+                message.error(errorMessage[0]);
+            } else {
+                message.error("Failed to create! Please try again later.");
+            }
+        }
+
+    });
     const form = useForm<FormValues>()
     const { register, control, handleSubmit, formState } = form;
     // const { fields, append, prepend, remove, swap, move, insert } = useFieldArray({
@@ -91,14 +106,6 @@ const New = () => {
         // removeEmptyFields(data);
         // message.info('Creating Card');
         mutate(data)
-        message.success('Card Created!')
-        
-        {(() => {
-            router.push(`/app/`)
-        })()}
-        console.log('Form Submitted', data)
-        
-
     }
 
     // image handle function
@@ -315,9 +322,9 @@ const New = () => {
 
 
                             <div className='py-3'>
-                                <button type='submit' className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                                <Button htmlType='submit' type='primary' loading={isCreating} className="text-white font-bold x-4 rounded">
                                     Save
-                                </button>
+                                </Button>
                             </div>
                         </form>
                     </div>
@@ -337,8 +344,6 @@ const New = () => {
                         </SimpleGrid>
                     </Card>
                 </div>
-                {/* Selectors Part-3 START */}
-
             </div >
         </div>
     )
