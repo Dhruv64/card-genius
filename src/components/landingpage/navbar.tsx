@@ -25,12 +25,7 @@ const Navbar: NextPage = () => {
         <div className="absolute h-full w-full top-[0%] right-[0%] bottom-[0%] left-[0%] rounded-3xs bg-mintcream" />
         <b onClick={()=> signIn(undefined , { callbackUrl: '/app' })} className="hover:cursor-pointer absolute top-[12px] left-[14px] leading-[100%]">Log in</b>
       </div>
-      <div className="absolute h-[84%] w-[16.61%] top-[8%] right-[0%] bottom-[8%] left-[90%]">
-        <div className="absolute h-full w-full top-[0%] right-[0%] bottom-[0%] left-[0%] rounded-3xs bg-limegreen" />
-        <b className="absolute top-[24%] left-[12%] leading-[100%]">
-          Create a Card
-        </b>
-      </div>
+     
     </div>
   );
 };
