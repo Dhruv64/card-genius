@@ -107,7 +107,7 @@ const Topnav: React.FC = () => {
 
                                             <Menu.Item>
                                                 {({ active }) => (
-                                                    <button className='bg-white rounded-xl  h-10 w-32 hover:cursor-pointer' onClick={() => signOut()}>
+                                                    <button className='bg-white rounded-xl  h-10 w-32 hover:cursor-pointer' onClick={() => signOut( { callbackUrl: '/' })}>
                                                         <a className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}>
                                                             Sign out
                                                         </a>
