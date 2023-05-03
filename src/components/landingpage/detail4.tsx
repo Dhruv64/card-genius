@@ -1,33 +1,35 @@
-import type { NextPage } from "next";
+import React from 'react'
 
-const Detail4: NextPage = () => {
-  return (
-    <div className="absolute top-[2918px] left-[0px] w-[1440px] h-[640px] text-left text-45xl text-black font-inter">
-      <div className="absolute top-[0px] left-[0px] bg-paleturquoise w-[1440px] h-[640px]" />
-      <div className="absolute top-[30px] left-[139px] w-[1162px] h-[590px]">
-        <img
-          className="absolute top-[0px] left-[0px] w-[520px] h-[590px] object-cover"
-          alt=""
-          src="/bg4@2x.png"
-        />
-        <div className="absolute top-[97px] left-[520px] w-[642px] h-[387px]">
-          <div className="absolute top-[0px] left-[0px] inline-block w-[642px] h-[159.71px]">
-            Customize your card to match your brand.
-          </div>
-          <div className="absolute top-[184px] left-[5px] text-xl inline-block w-[632px] h-[203px]">
-            Business cards should include more than basic contact information.
-            With HiHello, you can have your preferred name, pronouns, and any
-            accreditations on your digital business card. Add a picture of
-            yourself, so people remember who you are, or add a live photo or
-            video to bring your card to life. Include your social media
-            accounts, a company logo, Venmo, Yelp page, PDFs, and more—HiHello
-            is truly the most customizable business card app in the App Store
-            and on Google Play.
-          </div>
+const Detail4 = () => {
+    return (
+        <div>
+            <section className="text-gray-600 body-font">
+                <div className="container mx-auto flex px-5 lg:px-40 py-24 md:flex-row flex-col items-center">
+                    <div className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0">
+                        {/* <img className="object-cover object-center rounded" alt="hero" src="https://dummyimage.com/720x600"/> */}
+                    </div>
+                    <div className="lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16 flex flex-col md:items-start md:text-left items-center text-center">
+                        <h1 className="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">Share your business card with anyone, anywhere.</h1>
+                        <p className="mb-8 leading-relaxed">Even if they don't have the app, you may share your HiHello digital business card with anyone. (Yes, the recipient does not have to have HiHello in order to get your card!) You can distribute your card in a variety of ways:</p>
+                        <div className='grid grid-cols-2 gap-10'>
+                            <div>
+                                <p>QR code</p>
+                                <p>Email</p>
+                                <p>Text</p>
+                            </div>
+                            <div>
+                                <p>Airdrop</p>
+                                <p>Social media</p>
+                                <p>Link sharing</p>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </section>
         </div>
-      </div>
-    </div>
-  );
-};
+    )
+}
 
-export default Detail4;
+export default Detail4

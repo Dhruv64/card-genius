@@ -1,32 +1,23 @@
-import type { NextPage } from "next";
+import React from 'react'
 
-const Detail2: NextPage = () => {
-  return (
-    <div className="absolute top-[1638px] left-[0px] w-[1440px] h-[640px] text-left text-xl text-black font-inter">
-      <div className="absolute top-[0px] left-[0px] bg-paleturquoise w-[1440px] h-[640px]" />
-      <img
-        className="absolute top-[30px] left-[176px] w-[429.08px] h-[580px] object-cover"
-        alt=""
-        src="/bg2@2x.png"
-      />
-      <div className="absolute top-[106px] left-[690px] w-[557px] h-[428px]">
-        <div className="absolute top-[0px] left-[0px] w-[557px] h-[428px]">
-          <div className="absolute top-[232px] left-[0px] inline-block w-[557px] h-[196px]">
-            Digital business cards are free, completely customizable, and you
-            can share your card with anyone—no app is required to receive a
-            card.After you sign up on iOS, Android, or the web, you’ll be able
-            to create and personalize your first virtual business card. You can
-            create multiple cards with different information on each card. Make
-            a card for work contacts, one for clients or customers, and one for
-            your friends.
-          </div>
-          <div className="absolute top-[0px] left-[0px] text-45xl inline-block w-[509px] h-[152px] [text-shadow:0px_4px_4px_rgba(0,_0,_0,_0.25)]">
-            How do digital cards work?
-          </div>
+const Detail2 = () => {
+    return (
+        <div>
+            <section className="text-gray-600 body-font">
+                <div className="container mx-auto flex px-5 lg:px-40 py-24 md:flex-row flex-col items-center">
+                    <div className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0">
+                        <img className="object-cover object-center rounded" alt="hero" src="./bg41@2x.png"/>
+                    </div>
+                    <div className="lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16 flex flex-col md:items-start md:text-left items-center text-center">
+                        <h1 className="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">The top contactless business card.</h1>
+                        <p className="mb-8 leading-relaxed">No physical touch is essential to send or receive a virtual card from HiHello, making them germ-free. You can exchange electronic business cards with anyone, anywhere, at any time. By using a digital business card, you can easily update your contact information without having to order and mail new cards.</p>
+                        
+                        
+                    </div>
+                </div>
+            </section>
         </div>
-      </div>
-    </div>
-  );
-};
+    )
+}
 
-export default Detail2;
+export default Detail2

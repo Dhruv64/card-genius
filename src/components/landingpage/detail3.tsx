@@ -1,31 +1,23 @@
-import type { NextPage } from "next";
+import React from 'react'
 
-const Detail3: NextPage = () => {
-  return (
-    <div className="absolute top-[2278px] left-[0px] w-[1440px] h-[640px] text-left text-45xl text-gray font-inter">
-      <div className="absolute top-[0px] left-[0px] bg-darkslateblue w-[1440px] h-[640px]" />
-      <div className="absolute h-[90%] w-[75.28%] top-[5%] right-[12.29%] bottom-[5%] left-[12.43%]">
-        <img
-          className="absolute h-full w-[37.45%] top-[0%] right-[0%] bottom-[0%] left-[62.55%] max-w-full overflow-hidden max-h-full object-cover"
-          alt=""
-          src="/bg41@2x.png"
-        />
-        <div className="absolute top-[79px] left-[0px] w-[644px] h-[419px]">
-          <div className="absolute top-[0px] left-[0px] inline-block w-[644px] h-[150px]">
-            The best contactless business card.
-          </div>
-          <div className="absolute top-[184px] left-[5px] text-xl text-white inline-block w-[598px] h-[235px]">
-            Digital business cards are germ-free—no physical contact is
-            necessary to send or receive a virtual card. Electronic business
-            cards can be shared with anyone, anywhere, anytime. Using a digital
-            business card means you can update your information with a single
-            tap, so you don’t need to go through ordering and shipping new
-            cards.
-          </div>
+const Detail3 = () => {
+    return (
+        <div>
+            <section className="text-gray-600 body-font">
+                <div className="container mx-auto flex px-5 lg:px-40 py-24 md:flex-row flex-col items-center">
+                    <div className="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
+                        <h1 className="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">Customize your card to match your brand.</h1>
+                        <p className="mb-8 leading-relaxed">A QR codeInformation on business cards should go beyond just contact details. Your digital business card with HiHello can include your desired name, pronouns, and any credentials. To help people remember you, include a photo of yourself. You can also use a live photo or video to make your business card more engaging. HiHello is undoubtedly the most personalized business card software available in the software Store and on Google Play. Include your social media accounts, a corporate logo, Venmo, a Yelp page, PDFs, and more.</p>
+
+                        
+                    </div>
+                    <div className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6">
+                        {/* <img className="object-cover object-center rounded" alt="hero" src="https://dummyimage.com/720x600" /> */}
+                    </div>
+                </div>
+            </section>
         </div>
-      </div>
-    </div>
-  );
-};
+    )
+}
 
-export default Detail3;
+export default Detail3

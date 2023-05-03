@@ -1,31 +1,22 @@
 import type { NextPage } from "next";
-// import { Link } from "tabler-icons-react";
-import Link from "next/link";
 import {signIn} from "next-auth/react"
 
 const Navbar: NextPage = () => {
   return (
-    <div className="absolute h-[0.76%] w-[76.11%] top-[0.5%] right-[11.67%] bottom-[98.74%] left-[12.22%] mix-blend-normal text-center text-5xl text-white font-inter">
-      <img
-        className="absolute h-full w-[4.56%] top-[0%] right-[95.44%] bottom-[0%] -left-[10%] max-w-full overflow-hidden max-h-full"
-        alt=""
-        src="/company-logo.svg"
-      />
-      <b className="absolute top-[13px] -left-[5%]  text-5xl leading-[100%]">
-        Digital Card
-      </b>
-      <b className="absolute w-[4.94%] top-[26%] left-[58.03%] leading-[100%] text-xl inline-block">
-        Blog
-      </b>
-      <b className="absolute w-[7.73%] top-[26%] left-[47.08%] leading-[100%] text-xl inline-block">
-        Pricing
-      </b>
-      <b className="absolute w-[22.82%] top-[26%] left-[22.08%] leading-[100%] text-xl inline-block">{`Products & Solutions`}</b>
-      <div className="absolute h-[84%] w-[8.12%] top-[8%] right-[18.98%] bottom-[8%] left-[80%] text-black">
-        <div className="absolute h-full w-full top-[0%] right-[0%] bottom-[0%] left-[0%] rounded-3xs bg-mintcream" />
-        <b onClick={()=> signIn(undefined , { callbackUrl: '/app' })} className="hover:cursor-pointer absolute top-[12px] left-[14px] leading-[100%]">Log in</b>
-      </div>
-     
+    <div>
+      <header className="text-white bg-blue-950 body-font">
+        <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+          <a className="flex title-font font-medium items-center text-white mb-4 md:mb-0">
+            <img src="./card genius icon-01.png" className="h-16 w-16" alt="" />
+            <span className="ml-3 text-3xl">CardGenius.me</span>
+          </a>
+          <nav className="md:ml-auto flex flex-wrap items-center text-xl justify-center">
+            <a className="mr-5 hover:text-gray-900">Pricing</a>
+            <a className="mr-5 hover:text-gray-900">Blog</a>
+          </nav>
+          <button onClick={()=> signIn(undefined , { callbackUrl: '/app' })} className="inline-flex items-center bg-lime-300 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0">Login/SignUp</button>
+        </div>
+      </header>
     </div>
   );
 };

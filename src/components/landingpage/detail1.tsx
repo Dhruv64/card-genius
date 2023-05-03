@@ -1,33 +1,23 @@
-import type { NextPage } from "next";
+import React from 'react'
 
-const Detail1: NextPage = () => {
-  return (
-    <div className="absolute top-[994px] left-[0px] w-[1440px] h-[640px] text-left text-xl text-white font-inter">
-      <div className="absolute top-[0px] left-[0px] bg-darkslateblue w-[1440px] h-[640px]" />
-      <div className="absolute top-[30px] left-[171px] w-[1098px] h-[580px]">
-        <img
-          className="absolute top-[0px] left-[658px] w-[440px] h-[580px] object-cover"
-          alt=""
-          src="/bg1@2x.png"
-        />
-        <div className="absolute top-[96px] left-[0px] w-[652px] h-[388px]">
-          <div className="absolute top-[205px] left-[0px] inline-block w-[652px] h-[183px]">
-            Digital business cards are the modern way to share contact
-            information. Also known as virtual and electronic business cards,
-            digital business cards are more interactive, cost-effective, and
-            sustainable than their physical counterparts. One significant
-            benefit of digital business cards is that they can be shared with
-            anyone, anywhere. Digital business cards can be created on iOS,
-            Android, or computer and can be completely customized to fit your
-            style.
-          </div>
-          <div className="absolute top-[0px] left-[0px] text-45xl inline-block w-[564.74px] [text-shadow:0px_4px_4px_rgba(0,_0,_0,_0.25)]">
-            What is a digital business card?
-          </div>
+const Detail1 = () => {
+    return (
+        <div>
+            <section className="text-gray-600 body-font">
+                <div className="container mx-auto flex px-5 lg:px-40 py-24 md:flex-row flex-col items-center">
+                    <div className="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
+                        <h1 className="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">About Us</h1>
+                        <p className="mb-8 leading-relaxed">Information exchange in the modern era is done through digital business cards. Digital business cards, also referred to as virtual or electronic cards, are more interactive, economical, and environmentally friendly than traditional cards. The ability to distribute digital business cards with anybody, everywhere is a big advantage. You can design your own digital business cards with HiHello on a computer, an iOS device, or an Android device.</p>
+
+                        
+                    </div>
+                    <div className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6">
+                        {/* <img className="object-cover object-center rounded" alt="hero" src="https://dummyimage.com/720x600" /> */}
+                    </div>
+                </div>
+            </section>
         </div>
-      </div>
-    </div>
-  );
-};
+    )
+}
 
-export default Detail1;
+export default Detail1

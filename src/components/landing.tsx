@@ -1,30 +1,27 @@
 import type { NextPage } from "next";
 import Footer from "./landingpage/footer";
-import Detail7 from "./landingpage/detail7";
-import Detail6 from "./landingpage/detail6";
-import Detail5 from "./landingpage/detail5";
-import Detail4 from "./landingpage/detail4";
-import Detail3 from "./landingpage/detail3";
-import Detail2 from "./landingpage/detail2";
-import Detail1 from "./landingpage/detail1";
+
 import Feature from "./landingpage/feature";
 import Hero from "./landingpage/hero";
 import Navbar from "./landingpage/navbar";
+import Detail1 from "./landingpage/detail1";
+import Detail2 from "./landingpage/detail2";
+import Detail4 from "./landingpage/detail4";
+import Detail3 from "./landingpage/detail3";
 <style>@import url(`https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500&display=swap`);</style>
+
+
 const LandingPage: NextPage = () => {
   return (
-    <div className="relative bg-darkslateblue w-full h-[6607px] overflow-hidden">
-      <Footer />
-      <Detail7 />
-      <Detail6 />
-      <Detail5 />
-      <Detail4 />
-      <Detail3 />
-      <Detail2 />
-      <Detail1 />
-      <Feature />
-      <Hero />
+    <div className="w-full h-auto overflow-hidden">
       <Navbar />
+      <Hero />
+      <Feature />
+      <Detail1/>
+      <Detail2/>
+      <Detail3/>
+      <Detail4/>      
+      <Footer />
     </div>
   );
 };
