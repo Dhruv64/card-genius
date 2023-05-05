@@ -1,78 +1,70 @@
 import type { NextPage } from "next";
-
+import { BsShareFill, BsFillPencilFill } from 'react-icons/bs';
+import { MdManageHistory, MdNature, MdUpdate, MdOutlineEdit } from 'react-icons/md';
 const Feature: NextPage = () => {
   return (
-    <div>
-      <section className="body-font bg-blue-950">
-        <div className="container px-5 lg:px-40 py-12 mx-auto">
-          <div className="flex flex-wrap w-full mb-10 flex-col items-center text-center">
-            <h1 className="sm:text-3xl text-2xl font-medium title-font mb-2 text-white">Our Products Key Features</h1>
+    <div className="bg-blue-950">
+      <section className="text-gray-600 body-font">
+        <div className="container px-5 py-12 mx-auto">
+          <div className="text-center mb-20">
+            <h1 className="sm:text-3xl text-2xl font-medium text-center title-font text-white mb-4">Our Product Features</h1>
           </div>
-          <div className="flex flex-wrap -m-4">
-            <div className="xl:w-1/3 md:w-1/2 p-4">
-              <div className="border border-gray-200 p-6 rounded-lg">
-                <div className="w-10 h-10 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-4">
-                  <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" className="w-6 h-6" viewBox="0 0 24 24">
-                    <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1zM4 22v-7"></path>
-                  </svg>
+          <div className="flex flex-wrap lg:w-4/5 sm:mx-auto sm:mb-2 -mx-2">
+            <div className="p-2 sm:w-1/2 w-full">
+              <div className="bg-gray-100 rounded flex p-4 h-full items-center">
+                <div className="w-10 h-10 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mr-4">
+                  <BsFillPencilFill />
                 </div>
-                <h2 className="text-lg text-white font-medium title-font mb-2">Easily create digital business Card</h2>
-                
+
+                <span className="title-font font-medium">Easily Create Digital Business Card</span>
               </div>
             </div>
-            <div className="xl:w-1/3 md:w-1/2 p-4">
-              <div className="border border-gray-200 p-6 rounded-lg">
-                <div className="w-10 h-10 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-4">
-                  <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" className="w-6 h-6" viewBox="0 0 24 24">
-                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
-                  </svg>
+            <div className="p-2 sm:w-1/2 w-full">
+              <div className="bg-gray-100 rounded flex p-4 h-full items-center">
+                <div className="w-10 h-10 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mr-4">
+                  <BsShareFill />
+
                 </div>
-                <h2 className="text-lg text-white font-medium title-font mb-2">Share your cards with anyone.</h2>
-                
+                <span className="title-font font-medium">Share Your Cards with Anyone</span>
               </div>
             </div>
-            <div className="xl:w-1/3 md:w-1/2 p-4">
-              <div className="border border-gray-200 p-6 rounded-lg">
-                <div className="w-10 h-10 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-4">
-                  <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" className="w-6 h-6" viewBox="0 0 24 24">
-                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-                  </svg>
+            <div className="p-2 sm:w-1/2 w-full">
+              <div className="bg-gray-100 rounded flex p-4 h-full items-center">
+                <div className="w-10 h-10 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mr-4">
+                  <MdManageHistory />
+
                 </div>
-                <h2 className="text-lg text-white font-medium title-font mb-2">Manage Your Contacts Seamlessly</h2>
+                <span className="title-font font-medium">Manage Your Contacts Seamlessly</span>
               </div>
             </div>
-            <div className="xl:w-1/3 md:w-1/2 p-4">
-              <div className="border border-gray-200 p-6 rounded-lg">
-                <div className="w-10 h-10 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-4">
-                  <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" className="w-6 h-6" viewBox="0 0 24 24">
-                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-                  </svg>
+            <div className="p-2 sm:w-1/2 w-full">
+              <div className="bg-gray-100 rounded flex p-4 h-full items-center">
+                <div className="w-10 h-10 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mr-4">
+                  <MdNature />
+
                 </div>
-                <h2 className="text-lg text-white font-medium title-font mb-2">Manage Your Contacts Seamlessly</h2>
+                <span className="title-font font-medium">Environment Friendly</span>
               </div>
             </div>
-            <div className="xl:w-1/3 md:w-1/2 p-4">
-              <div className="border border-gray-200 p-6 rounded-lg">
-                <div className="w-10 h-10 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-4">
-                  <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" className="w-6 h-6" viewBox="0 0 24 24">
-                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-                  </svg>
+            <div className="p-2 sm:w-1/2 w-full">
+              <div className="bg-gray-100 rounded flex p-4 h-full items-center">
+                <div className="w-10 h-10 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mr-4">
+                  <MdOutlineEdit />
+
                 </div>
-                <h2 className="text-lg text-white font-medium title-font mb-2">Manage Your Contacts Seamlessly</h2>
+                <span className="title-font font-medium">Customise As Per Your Need</span>
               </div>
             </div>
-            <div className="xl:w-1/3 md:w-1/2 p-4">
-              <div className="border border-gray-200 p-6 rounded-lg">
-                <div className="w-10 h-10 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-4">
-                  <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" className="w-6 h-6" viewBox="0 0 24 24">
-                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-                  </svg>
+            <div className="p-2 sm:w-1/2 w-full">
+              <div className="bg-gray-100 rounded flex p-4 h-full items-center">
+                <div className="w-10 h-10 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mr-4">
+                  <MdUpdate />
+
                 </div>
-                <h2 className="text-lg text-white font-medium title-font mb-2">Manage Your Contacts Seamlessly</h2>
+                <span className="title-font font-medium">Can Be Updated Easily</span>
               </div>
             </div>
           </div>
-          {/* <button className="flex mx-auto mt-16 text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Button</button> */}
         </div>
       </section>
     </div>

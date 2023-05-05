@@ -192,7 +192,7 @@ const New = () => {
 
         <div >
             <div className='my-5'>
-                <div className=' px-3'>
+                <div className='px-3'>
                     <a href='/app/'><button className='bg-blue-500 hover:bg-blue-400 text-white rounded-full font-bold py-1 px-2 border-b-4 border-blue-700 hover:border-blue-500 '><IoArrowBack size={30} /></button></a>
                     <label className="text-gray-500 font-bold pl-5">
                         Cards Details
@@ -200,8 +200,8 @@ const New = () => {
                 </div>
 
             </div>
-            <div className='flex '>
-                <div className='text-center p-8 w-1/3' >
+            <div className='lg:flex '>
+                <div className='text-center lg:w-1/3' >
                     <div className='border border-solid p-5 rounded mx-10'>
                         <form onSubmit={handleSubmit(onSubmit)} noValidate>
                             <div>
@@ -227,28 +227,13 @@ const New = () => {
                                     <p className='text-red-600 text-[12px] text-left'>{errors.name?.message}</p>
                                 </div>
 
-                                {/* <div>
-                                <label className='font-bold flex mb-3' htmlFor="middlename">Middle Name</label>
-                                <input className='block w-[80%] py-1.5 px-3 text-sm leading-snug border border-x border-solid rounded' type="text" id="middlename" {...register("middlename")} />
-                            </div> */}
-
-                                {/* <div className=''>
-                                <label className='font-bold flex mb-3' htmlFor="lastname">Last Name</label>
-                                <input className='block w-[80%] py-1.5 px-3 text-sm leading-snug border border-x border-solid rounded' type="text" id="lastname" {...register("lastname", {
-                                    required: "Last Name is required"
-                                })} />
-                                <p className='text-red-600 text-[12px] text-left'>{errors.lastname?.message}</p>
-                            </div> */}
+                               
                                 <div className='flex-col'>
                                     <label className='font-bold flex mb-3' htmlFor="title">Title</label>
                                     <input className='block w-[80%] py-1.5 px-3 text-sm leading-snug border border-x border-solid rounded resize-none' id="title" {...register("title")} />
 
                                 </div>
-                                {/* <div>
-                                <label className='font-bold flex mb-3' htmlFor="department">Department</label>
-                                <input className='block w-[80%] py-1.5 px-3 text-sm leading-snug border border-x border-solid rounded' type="text" id="department" {...register("department")} />
-
-                            </div> */}
+                                
                                 <div >
                                     <label className='font-bold flex mb-3' htmlFor="company">Company</label>
                                     <input className='block w-[80%] py-1.5 px-3 text-sm leading-snug border border-x border-solid rounded' type="text" id="company" {...register("company")} />
@@ -334,7 +319,7 @@ const New = () => {
 
                 {/* Selectors Part-3 START */}
 
-                <div className='w-1/4'>
+                <div className='lg:w-1/4 lg:pt-0 lg:px-0 pt-10 px-10'>
                     <Card withBorder radius="md" className={classes.card}>
                         <Group position="apart">
                             <Text className={classes.title}>Add fields</Text>

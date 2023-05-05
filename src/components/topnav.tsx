@@ -8,7 +8,7 @@ import { Bars3Icon, BellIcon, UserIcon, XMarkIcon } from '@heroicons/react/24/ou
 
 const navigation = [
     { name: 'Cards', href: '/app/', current: false },
-
+    { name: 'Settings', href: '/app/', current: false },
 ]
 
 function classNames(...classes: string[]) {
@@ -19,7 +19,7 @@ const Topnav: React.FC = () => {
     const { data: session } = useSession();
 
     return (
-        <Disclosure as="nav" className="bg-blue-900">
+        <Disclosure as="nav" className="bg-blue-950">
             {({ open }) => (
                 <>
                     <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
@@ -38,14 +38,14 @@ const Topnav: React.FC = () => {
                             <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                                 <div className="flex flex-shrink-0 items-center">
                                     <img
-                                        className="block h-8 w-auto lg:hidden"
-                                        src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
-                                        alt="Your Company"
+                                        className="block h-12 w-auto lg:hidden"
+                                        src="./card genius icon-01.png"
+                                        alt="Card Genius"
                                     />
                                     <img
-                                        className="hidden h-8 w-auto lg:block"
-                                        src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
-                                        alt="Your Company"
+                                        className="hidden h-12 w-auto lg:block"
+                                        src="./card genius icon-01.png"
+                                        alt="Card Genius"
                                     />
                                 </div>
                                 <div className="hidden sm:ml-6 sm:block">
@@ -59,8 +59,8 @@ const Topnav: React.FC = () => {
                                                         key={item.name}
                                                         href={item.href}
                                                         className={classNames(
-                                                            item.current ? 'bg-gray text-white' : 'text-cyan-200 no-underline hover:bg-gray-700 hover:text-white',
-                                                            'rounded-md px-3 py-2 text-sm font-medium'
+                                                            item.current ? 'bg-gray text-white' : 'text-cyan-400 no-underline hover:bg-blue-500 hover:text-white',
+                                                            'rounded-md px-3 py-3 text-base font-medium'
                                                         )}
                                                         aria-current={item.current ? 'page' : undefined}
                                                     >
@@ -86,7 +86,7 @@ const Topnav: React.FC = () => {
                                             )
                                         } else return (
                                             <div>
-                                                <Menu.Button className="flex rounded-lg p-3 bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+                                                <Menu.Button className="flex rounded-lg p-3 bg-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                                                     <span className="sr-only">Open user menu</span>
                                                     <UserIcon className='h-4 w-4 mr-2' /><span>{session?.user.name}</span>
                                                 </Menu.Button>
@@ -107,8 +107,8 @@ const Topnav: React.FC = () => {
 
                                             <Menu.Item>
                                                 {({ active }) => (
-                                                    <button className='bg-white rounded-xl  h-10 w-32 hover:cursor-pointer' onClick={() => signOut( { callbackUrl: '/' })}>
-                                                        <a className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}>
+                                                    <button className='bg-white rounded-2xl  h-10 w-32 hover:cursor-pointer' onClick={() => signOut( { callbackUrl: '/' })}>
+                                                        <a className={classNames(active ? 'bg-gray-100' : '', 'block py-2 text-sm rounded-2xl text-gray-700')}>
                                                             Sign out
                                                         </a>
                                                     </button>

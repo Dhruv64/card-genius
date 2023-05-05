@@ -1,5 +1,6 @@
 import type { NextPage } from "next";
 import {signIn} from "next-auth/react"
+import Link from "next/link";
 
 const Navbar: NextPage = () => {
   return (
@@ -11,8 +12,8 @@ const Navbar: NextPage = () => {
             <span className="ml-3 text-3xl">CardGenius.me</span>
           </a>
           <nav className="md:ml-auto flex flex-wrap items-center text-xl justify-center">
-            <a className="mr-5 hover:text-gray-900">Pricing</a>
-            <a className="mr-5 hover:text-gray-900">Blog</a>
+            <a className="mr-5 hover:text-blue-300">Pricing</a>
+            <Link className="mr-5 text-white underline-offset-auto hover:text-blue-300" href='/app/blog'>Blog</Link>
           </nav>
           <button onClick={()=> signIn(undefined , { callbackUrl: '/app' })} className="inline-flex items-center bg-lime-300 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0">Login/SignUp</button>
         </div>

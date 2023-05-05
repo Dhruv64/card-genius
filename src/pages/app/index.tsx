@@ -73,28 +73,32 @@ const index = () => {
 
   return (
 
-    <div>
+    <div className='bg-blue-200'>
+
       <Topnav />
 
       {(() => {
         if (!session) {
           return null
         } else return (
-          <Container py="xl">
-          <SimpleGrid cols={3} breakpoints={[{ maxWidth: 'sm', cols: 1 }]}>
-            <Card p={'xs'} radius="md" component="a" href='/app/new' className={`border-dashed border ${classes.createCard}`} >
-              <div>
-                <span className='text-77xl font-thin mx-14'>+</span><br></br>
-                <span className='font-[350] mx-10'>Create a card</span>
-              </div>
-            </Card>
-            {cards}
-          </SimpleGrid>
-        </Container>
-  
+          <Container className='' py="xl">
+            <div className='ml-20 lg:ml-0'>
+              <SimpleGrid cols={4} breakpoints={[{ maxWidth: 'sm', cols: 1, }]}>
+                <Card p={'xs'} radius="md" component="a" href='/app/new' className={`border-dashed border ${classes.createCard}`} >
+                  <div className=''>
+                    <span className='text-xl font-thin mx-20'>+</span><br></br>
+                    <span className='font-light mx-10 pt-10'>Create a card</span>
+                  </div>
+                </Card>
+                {cards}
+              </SimpleGrid>
+            </div>
+          </Container>
+
         )
       })()}
-     
+
+
     </div>
   )
 }
