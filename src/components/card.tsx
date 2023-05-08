@@ -220,11 +220,11 @@ export default function BadgeCard({ image, name, title, company, logo, phone, em
                                             if (link == null || link == '') {
                                                 return null
                                             } else return (
-                                                <a href={`//${link}`} className='no-underline'>
+                                                <a href={`//${link}`} target="_blank" className='no-underline'>
 
                                                     <div className={cx(classes.wrapper)}>
 
-                                                        <ThemeIcon size={40} radius="md" className={classes.icon}>
+                                                        <ThemeIcon size={40} radius="md" target="_blank" className={classes.icon}>
                                                             <FontAwesomeIcon icon={"fa-solid fa-link"} />
                                                         </ThemeIcon>
 
@@ -243,19 +243,21 @@ export default function BadgeCard({ image, name, title, company, logo, phone, em
                                             if (whatsapp == null || whatsapp == '') {
                                                 return null
                                             } else return (
-                                                <div className={cx(classes.wrapper)}>
+                                                <a href={`//api.whatsapp.com/send?phone=${whatsapp}`} target="_blank" className='no-underline'>
+                                                    <div className={cx(classes.wrapper)}>
 
-                                                    <ThemeIcon size={40} radius="md" className={classes.icon}>
-                                                        <FontAwesomeIcon icon={"fa-brands fa-whatsapp"} />
-                                                    </ThemeIcon>
+                                                        <ThemeIcon size={40} radius="md" className={classes.icon}>
+                                                            <FontAwesomeIcon icon={"fa-brands fa-whatsapp"} />
+                                                        </ThemeIcon>
 
-                                                    <div>
-                                                        <Text size="xs" className={classes.type} >
-                                                            WhatsApp
-                                                        </Text>
-                                                        <Text className={classes.entry}>{whatsapp}</Text>
+                                                        <div>
+                                                            <Text size="xs" className={classes.type} >
+                                                                WhatsApp
+                                                            </Text>
+                                                            <Text className={classes.entry}>{whatsapp}</Text>
+                                                        </div>
                                                     </div>
-                                                </div>
+                                                </a>
                                             )
                                         })()}
 
@@ -263,6 +265,8 @@ export default function BadgeCard({ image, name, title, company, logo, phone, em
                                             if (linkedin == null || linkedin == '') {
                                                 return null
                                             } else return (
+                                                <a href={`//www.linkedin.com/in/${linkedin}/`} target="_blank" className='no-underline'>
+
                                                 <div className={cx(classes.wrapper)}>
 
                                                     <ThemeIcon size={40} radius="md" className={classes.icon}>
@@ -276,6 +280,7 @@ export default function BadgeCard({ image, name, title, company, logo, phone, em
                                                         <Text className={classes.entry}>{linkedin}</Text>
                                                     </div>
                                                 </div>
+                                                </a>
                                             )
                                         })()}
 
@@ -283,19 +288,22 @@ export default function BadgeCard({ image, name, title, company, logo, phone, em
                                             if (twitter == null || twitter == '') {
                                                 return null
                                             } else return (
-                                                <div className={cx(classes.wrapper)}>
+                                                <a href={`//twitter.com/${twitter}`} target="_blank" className='no-underline'>
 
-                                                    <ThemeIcon size={40} radius="md" className={classes.icon}>
-                                                        <FontAwesomeIcon icon={"fa-brands fa-twitter"} />
-                                                    </ThemeIcon>
+                                                    <div className={cx(classes.wrapper)}>
 
-                                                    <div>
-                                                        <Text size="xs" className={classes.type} >
-                                                            Twitter
-                                                        </Text>
-                                                        <Text className={classes.entry}>{twitter}</Text>
+                                                        <ThemeIcon size={40} radius="md" className={classes.icon}>
+                                                            <FontAwesomeIcon icon={"fa-brands fa-twitter"} />
+                                                        </ThemeIcon>
+
+                                                        <div>
+                                                            <Text size="xs" className={classes.type} >
+                                                                Twitter
+                                                            </Text>
+                                                            <Text className={classes.entry}>{twitter}</Text>
+                                                        </div>
                                                     </div>
-                                                </div>
+                                                </a>
                                             )
                                         })()}
 
@@ -303,19 +311,21 @@ export default function BadgeCard({ image, name, title, company, logo, phone, em
                                             if (instagram == null || instagram == '') {
                                                 return null
                                             } else return (
-                                                <div className={cx(classes.wrapper)}>
+                                                <a href={`//www.instagram.com/${instagram}/`} target="_blank" className='no-underline'>
+                                                    <div className={cx(classes.wrapper)}>
 
-                                                    <ThemeIcon size={40} radius="md" className={classes.icon}>
-                                                        <FontAwesomeIcon icon={"fa-brands fa-instagram"} />
-                                                    </ThemeIcon>
+                                                        <ThemeIcon size={40} radius="md" className={classes.icon}>
+                                                            <FontAwesomeIcon icon={"fa-brands fa-instagram"} />
+                                                        </ThemeIcon>
 
-                                                    <div>
-                                                        <Text size="xs" className={classes.type} >
-                                                            Instagram
-                                                        </Text>
-                                                        <Text className={classes.entry}>{instagram}</Text>
+                                                        <div>
+                                                            <Text size="xs" className={classes.type} >
+                                                                Instagram
+                                                            </Text>
+                                                            <Text className={classes.entry}>{instagram}</Text>
+                                                        </div>
                                                     </div>
-                                                </div>
+                                                </a>
                                             )
                                         })()}
 
@@ -323,19 +333,21 @@ export default function BadgeCard({ image, name, title, company, logo, phone, em
                                             if (facebook == null || facebook == '') {
                                                 return null
                                             } else return (
-                                                <div className={cx(classes.wrapper)}>
+                                                <a href={`//www.facebook.com/${facebook}`} target="_blank" className='no-underline'>
+                                                    <div className={cx(classes.wrapper)}>
 
-                                                    <ThemeIcon size={40} radius="md" className={classes.icon}>
-                                                        <FontAwesomeIcon icon={"fa-brands fa-facebook"} />
-                                                    </ThemeIcon>
+                                                        <ThemeIcon size={40} radius="md" className={classes.icon}>
+                                                            <FontAwesomeIcon icon={"fa-brands fa-facebook"} />
+                                                        </ThemeIcon>
 
-                                                    <div>
-                                                        <Text size="xs" className={classes.type} >
-                                                            Facebook
-                                                        </Text>
-                                                        <Text className={classes.entry}>{facebook}</Text>
+                                                        <div>
+                                                            <Text size="xs" className={classes.type} >
+                                                                Facebook
+                                                            </Text>
+                                                            <Text className={classes.entry}>{facebook}</Text>
+                                                        </div>
                                                     </div>
-                                                </div>
+                                                </a>
                                             )
                                         })()}
 
@@ -344,19 +356,22 @@ export default function BadgeCard({ image, name, title, company, logo, phone, em
                                             if (youtube == null || youtube == '') {
                                                 return null
                                             } else return (
-                                                <div className={cx(classes.wrapper)}>
+                                                <a href={`//www.youtube.com/${youtube}`} target="_blank" className='no-underline'>
 
-                                                    <ThemeIcon size={40} radius="md" className={classes.icon}>
-                                                        <FontAwesomeIcon icon={"fa-brands fa-youtube"} />
-                                                    </ThemeIcon>
+                                                    <div className={cx(classes.wrapper)}>
 
-                                                    <div>
-                                                        <Text size="xs" className={classes.type} >
-                                                            YouTube
-                                                        </Text>
-                                                        <Text className={classes.entry}>{youtube}</Text>
+                                                        <ThemeIcon size={40} radius="md" className={classes.icon}>
+                                                            <FontAwesomeIcon icon={"fa-brands fa-youtube"} />
+                                                        </ThemeIcon>
+
+                                                        <div>
+                                                            <Text size="xs" className={classes.type} >
+                                                                YouTube
+                                                            </Text>
+                                                            <Text className={classes.entry}>{youtube}</Text>
+                                                        </div>
                                                     </div>
-                                                </div>
+                                                </a>
                                             )
                                         })()}
 
@@ -364,19 +379,22 @@ export default function BadgeCard({ image, name, title, company, logo, phone, em
                                             if (github == null || github == '') {
                                                 return null
                                             } else return (
-                                                <div className={cx(classes.wrapper)}>
+                                                <a href={`//github.com/${github}`} target="_blank" className='no-underline'>
 
-                                                    <ThemeIcon size={40} radius="md" className={classes.icon}>
-                                                        <FontAwesomeIcon icon={"fa-brands fa-github"} />
-                                                    </ThemeIcon>
+                                                    <div className={cx(classes.wrapper)}>
 
-                                                    <div>
-                                                        <Text size="xs" className={classes.type} >
-                                                            LinkedIn
-                                                        </Text>
-                                                        <Text className={classes.entry}>{github}</Text>
+                                                        <ThemeIcon size={40} radius="md" className={classes.icon}>
+                                                            <FontAwesomeIcon icon={"fa-brands fa-github"} />
+                                                        </ThemeIcon>
+
+                                                        <div>
+                                                            <Text size="xs" className={classes.type} >
+                                                                Github
+                                                            </Text>
+                                                            <Text className={classes.entry}>{github}</Text>
+                                                        </div>
                                                     </div>
-                                                </div>
+                                                </a>
                                             )
                                         })()}
 
