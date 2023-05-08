@@ -5,32 +5,29 @@ import { generateSSGHelper } from "~/server/helpers/ssgHelper";
 import BadgeCard from "~/components/card";
 import NotFound404 from "~/components/404";
 import React from 'react';
-import { QRCode, Tooltip } from 'antd';
+import { QRCode, Tooltip, Typography } from 'antd';
 import { ArrowBarToDown } from "tabler-icons-react";
 import {
     Card,
-
     Button,
     createStyles,
     rem,
     CardSection,
 } from '@mantine/core';
-
-
 import {
     EmailShareButton,
     EmailIcon,
-    FacebookMessengerShareButton,
     WhatsappIcon,
-    LinkedinShareButton,
     LinkedinIcon,
-    RedditShareButton,
-    TelegramShareButton,
     TwitterShareButton,
+    TwitterIcon,
     WhatsappShareButton,
 } from "react-share";
-import Email from "next-auth/providers/email";
 import { useSession } from "next-auth/react";
+import Sharenav from "~/components/sharenav";
+
+const { Paragraph } = Typography;
+
 
 const downloadQRCode = () => {
     const canvas = document.getElementById('myqrcode')?.querySelector<HTMLCanvasElement>('canvas');
@@ -74,14 +71,11 @@ const useStyles = createStyles((theme) => ({
 
 
 const CardSharePage: NextPage<{ id: string }> = ({ id }) => {
-
     const { data } = api.cards.getCardById.useQuery({
         id,
     });
     const url = `cardgenius.me/preview/${data?.id}`
-
     const { data: session } = useSession()
-
     if (!data) return <NotFound404 />;
     else console.log(data)
 
@@ -98,6 +92,7 @@ const CardSharePage: NextPage<{ id: string }> = ({ id }) => {
                                     {data.name}'s card
                                 </title>
                             </Head>
+                            <Sharenav cardId={data.id}/>
                             <div className="md:py-4 lg:flex justify-evenly">
 
                                 <BadgeCard image={data.imgUrl} name={data.name} title={data.title} logo={data.logoUrl} company={data.company} color={""} phone={data.phone} email={data.email} address={data.address} websitelink={data.websitelink} link={data.link} github={data.github} twitter={data.twitter} instagram={data.instagram} linkedin={data.linkedin} facebook={data.facebook} youtube={data.youtube} whatsapp={data.whatsapp} />
@@ -119,19 +114,27 @@ const CardSharePage: NextPage<{ id: string }> = ({ id }) => {
                                         </CardSection>
                                         <hr />
                                         <CardSection className={`text-center ${classes.section}`}>
-                                            <span className="font-semibold ">social share</span>
+                                            <span className="font-semibold ">Social share</span>
                                             <CardSection className="mt-5 space-x-2">
                                                 <WhatsappShareButton url={url} title="Visit my Card Genius card">
                                                     <WhatsappIcon round={true} size={40} />
                                                 </WhatsappShareButton>
-                                                <LinkedinShareButton url={url}>
+                                                <a href={`https://www.linkedin.com/sharing/share-offsite/?url=${url}`}>
                                                     <LinkedinIcon round={true} size={40} />
-                                                </LinkedinShareButton >
+                                                </a>
+                                                <TwitterShareButton url={url}>
+                                                    <TwitterIcon round={true} size={40}/>
+                                                </TwitterShareButton>
                                                 <EmailShareButton url={url} title="Visit my Card Genius card">
                                                     <EmailIcon round={true} size={40} />
                                                 </EmailShareButton>
                                             </CardSection>
                                         </CardSection>
+                                        <CardSection className={`text-center ${classes.section}`}>
+                                            <span className="font-semibold ">Copy link</span>
+                                            <Paragraph copyable className="w-[300px] font-semibold p-3 rounded-lg mt-5 bg-slate-100">{url}</Paragraph>
+                                        </CardSection>
+
                                     </Card>
                                 </div>
                             </div>

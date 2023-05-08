@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { signOut, useSession } from 'next-auth/react';
 import { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
-import { Bars3Icon, BellIcon, UserIcon, XMarkIcon } from '@heroicons/react/24/outline'
+import { Bars3Icon, UserIcon, XMarkIcon } from '@heroicons/react/24/outline'
 
 
 const navigation = [

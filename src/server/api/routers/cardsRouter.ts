@@ -93,7 +93,20 @@ export const cardsRouter = createTRPCRouter({
       })
       return cardData
     }),
-
+  deleteCardById: publicProcedure
+    .input(
+      z.object({
+        Id: z.string()
+      }))
+    .mutation(async ({ ctx, input }) => {
+      const userId = ctx.session?.user.id
+      const deleteCard = await ctx.prisma.card.delete({
+        where:{
+          id: input.Id
+        }
+      })
+    }
+    )
 
 });
 

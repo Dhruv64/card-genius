@@ -4,7 +4,9 @@ import Topnav from '~/components/topnav';
 import Head from 'next/head';
 import { api } from "~/utils/api";
 import NotFound404 from "~/components/404";
-import { createStyles, SimpleGrid, Card, Image, Text, Container } from '@mantine/core';
+import { createStyles, SimpleGrid, Card, Image, Text, Container, Menu, ActionIcon, Group } from '@mantine/core';
+import { DotsVertical, Pencil, Trash } from "tabler-icons-react"
+import Link from 'next/link';
 
 
 
@@ -23,7 +25,7 @@ const index = () => {
     card: {
       transition: 'transform 150ms ease, box-shadow 150ms ease',
       boxShadow: theme.shadows.md,
-      height: 220,
+      height: 230,
       width: 200,
       '&:hover': {
         transform: 'scale(1.04)',
@@ -55,25 +57,30 @@ const index = () => {
   const cards = data?.map((item) => (
 
     <>
-      <Head>
-        <title>
-          Your Cards
-        </title>
-      </Head>
-      <Card key={item.name} p={'xs'} radius="md" component="a" href={`app/share/${item.id}`} className={classes.card} >
+      <Link href={`app/share/${item.id}`} className='no-underline'>
+        <Card key={item.name} p={'xs'} radius="md" component="a" className={`relative ${classes.card}`} >
 
-        <Image src={item.imgUrl} width={200} height={180} />
-        <Text className={classes.title} mt={5}>
-          {item.name}
-        </Text>
 
-      </Card>
+          <Image src={item.imgUrl} width={200} height={180} />
+
+          <Group position="apart">
+            <Text className={`w-[200px] truncate overflow-hidden  ${classes.title}`} mt={5}>
+              {item.name}
+            </Text>
+          </Group>
+        </Card>
+      </Link>
     </>
   ));
 
   return (
 
     <div className='bg-blue-200'>
+      <Head>
+        <title>
+          Your Cards
+        </title>
+      </Head>
 
       <Topnav />
 
@@ -84,11 +91,9 @@ const index = () => {
           <Container className='' py="xl">
             <div className='ml-20 lg:ml-0'>
               <SimpleGrid cols={4} breakpoints={[{ maxWidth: 'sm', cols: 1, }]}>
-                <Card p={'xs'} radius="md" component="a" href='/app/new' className={`border-dashed border ${classes.createCard}`} >
-                  <div className=''>
-                    <span className='text-xl font-thin mx-20'>+</span><br></br>
-                    <span className='font-light mx-10 pt-10'>Create a card</span>
-                  </div>
+                <Card p={'xs'} radius="md" component="a" href='/app/new' className={`border-dashed border text-center ${classes.createCard}`} >
+                  <span className='text-9xl font-thin'>+</span><br></br>
+                  <span className='font-light pt-10'>Create a card</span>
                 </Card>
                 {cards}
               </SimpleGrid>
