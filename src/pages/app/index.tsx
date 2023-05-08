@@ -57,7 +57,7 @@ const index = () => {
     <>
       <Head>
         <title>
-          Your Cards
+          Card Genius
         </title>
       </Head>
       <Card key={item.name} p={'xs'} radius="md" component="a" href={`app/share/${item.id}`} className={classes.card} >
@@ -86,7 +86,7 @@ const index = () => {
               <SimpleGrid cols={4} breakpoints={[{ maxWidth: 'sm', cols: 1, }]}>
                 <Card p={'xs'} radius="md" component="a" href='/app/new' className={`border-dashed border ${classes.createCard}`} >
                   <div className=''>
-                    <span className='text-xl font-thin mx-20'>+</span><br></br>
+                    <span className='text-9xl font-thin mx-11'>+</span><br></br>
                     <span className='font-light mx-10 pt-10'>Create a card</span>
                   </div>
                 </Card>

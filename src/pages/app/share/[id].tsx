@@ -74,7 +74,9 @@ const useStyles = createStyles((theme) => ({
 
 
 const CardSharePage: NextPage<{ id: string }> = ({ id }) => {
-
+    // const saveContact = () => {
+    //     console.log(data)
+    // };
     const { data } = api.cards.getCardById.useQuery({
         id,
     });
@@ -108,7 +110,7 @@ const CardSharePage: NextPage<{ id: string }> = ({ id }) => {
 
                                         <CardSection className={classes.section}>
                                             <div id="myqrcode">
-                                                <QRCode size={300} value={url} style={{ marginBottom: 16 }} className="p-10" />
+                                                <QRCode size={300} value={url} style={{ marginBottom: 16 }} className="mx-auto" />
                                                 <Tooltip title="Download QR">
                                                     <Button variant="light" color="blue" fullWidth mt="md" radius="md" onClick={downloadQRCode}>
                                                         <span>Download your Card's QR  &nbsp;&nbsp;</span>
@@ -132,6 +134,18 @@ const CardSharePage: NextPage<{ id: string }> = ({ id }) => {
                                                 </EmailShareButton>
                                             </CardSection>
                                         </CardSection>
+                                        <hr/>
+                                        {/* <CardSection className={classes.section}>
+                                            <div id="myqrcode">
+                                                
+                                                <Tooltip title="Save Contact">
+                                                    <Button variant="light" color="blue" fullWidth mt="md" radius="md" onClick={saveContact}>
+                                                        <span>Save Contact  &nbsp;&nbsp;</span>
+                                                        <ArrowBarToDown />
+                                                    </Button>
+                                                </Tooltip>
+                                            </div>
+                                        </CardSection> */}
                                     </Card>
                                 </div>
                             </div>
