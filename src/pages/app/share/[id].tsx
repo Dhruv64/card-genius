@@ -71,9 +71,6 @@ const useStyles = createStyles((theme) => ({
 
 
 const CardSharePage: NextPage<{ id: string }> = ({ id }) => {
-    // const saveContact = () => {
-    //     console.log(data)
-    // };
     const { data } = api.cards.getCardById.useQuery({
         id,
     });
@@ -95,7 +92,7 @@ const CardSharePage: NextPage<{ id: string }> = ({ id }) => {
                                     {data.name}'s card
                                 </title>
                             </Head>
-                            <Sharenav cardId={data.id}/>
+                            <Sharenav cardId={data.id} image={data.imgUrl} name={data.name} title={data.title} logo={data.logoUrl} company={data.company}  phone={data.phone} email={data.email} address={data.address} websitelink={data.websitelink} link={data.link} github={data.github} twitter={data.twitter} instagram={data.instagram} linkedin={data.linkedin} facebook={data.facebook} youtube={data.youtube} whatsapp={data.whatsapp}/>
                             <div className="md:py-4 lg:flex justify-evenly">
 
                                 <BadgeCard image={data.imgUrl} name={data.name} title={data.title} logo={data.logoUrl} company={data.company} color={""} phone={data.phone} email={data.email} address={data.address} websitelink={data.websitelink} link={data.link} github={data.github} twitter={data.twitter} instagram={data.instagram} linkedin={data.linkedin} facebook={data.facebook} youtube={data.youtube} whatsapp={data.whatsapp} />

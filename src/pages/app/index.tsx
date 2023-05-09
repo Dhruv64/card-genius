@@ -26,7 +26,7 @@ const index = () => {
       transition: 'transform 150ms ease, box-shadow 150ms ease',
       boxShadow: theme.shadows.md,
       height: 230,
-      width: 200,
+      width: 220,
       '&:hover': {
         transform: 'scale(1.04)',
         boxShadow: theme.shadows.md,

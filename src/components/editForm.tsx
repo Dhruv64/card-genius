@@ -48,7 +48,6 @@ type FormValues = {
     logoUrl: string
     name: string
     title: string
-    department: string
     company: string
     phone: string
     email: string
@@ -64,67 +63,140 @@ type FormValues = {
     whatsapp: string
 }
 
+interface EditFormProps {
+    cardId: string;
+    image: string | null;
+    name: string | null;
+    title: string | null;
+    logo: string | null;
+    company: string | null;
+    phone: string | null;
+    email: string | null;
+    address: string | null;
+    websitelink: string | null;
+    link: string | null;
+    github: string | null;
+    twitter: string | null;
+    instagram: string | null;
+    linkedin: string | null;
+    facebook: string | null;
+    youtube: string | null;
+    whatsapp: string | null;
+}
 
-const New = () => {
+const EditForm = ({ cardId, image, name, title, company, logo, phone, email, address, websitelink, link, github, twitter, instagram, linkedin, facebook, youtube, whatsapp }: EditFormProps) => {
     const router = useRouter()
-    const { mutate, isLoading: isCreating } = api.cards.createCard.useMutation({
-        onSuccess: () => {
-            message.success('Card Created!')
-            router.push(`/app/`)
-        },
-        onError: (e) => {
-            const errorMessage = e.data?.zodError?.fieldErrors.content;
-            if (errorMessage && errorMessage[0]) {
-                message.error(errorMessage[0]);
-            } else {
-                message.error("Failed to create! Please try again later.");
-            }
-        }
+    const preloadedValues = {
+        imgUrl: image,
+        logoUrl: logo,
+        name: name,
+        title: title,
+        company: company,
+        phone: phone,
+        email: email,
+        address: address,
+        websitelink: websitelink,
+        link: link,
+        github: github,
+        twitter: twitter,
+        instagram: instagram,
+        linkedin: linkedin,
+        facebook: facebook,
+        youtube: youtube,
+        whatsapp: whatsapp,
+    }
+    // const { mutate, isLoading: isCreating } = api.cards.createCard.useMutation({
+    //     onSuccess: () => {
+    //         message.success('Card Created!')
+    //         router.push(`/app/`)
+    //     },
+    //     onError: (e) => {
+    //         const errorMessage = e.data?.zodError?.fieldErrors.content;
+    //         if (errorMessage && errorMessage[0]) {
+    //             message.error(errorMessage[0]);
+    //         } else {
+    //             message.error("Failed to create! Please try again later.");
+    //         }
+    //     }
 
-    });
-    const form = useForm<FormValues>()
+    // });
+    const form = useForm<FormValues>({
+        defaultValues: preloadedValues
+    })
     const { register, control, handleSubmit, formState } = form;
-    // const { fields, append, prepend, remove, swap, move, insert } = useFieldArray({
-    //     control, // control props comes from useForm (optional: if you are using FormContext)
-    //     name: "fields", // unique name for your Field Array
-    //   });
+
 
     const { errors } = formState;
-    // const removeEmptyFields = (data: FormValues) => {
-    //     Object.keys(data).forEach(key => {
-    //         if (data[key] === '' || data[key] == null) {
-    //             delete data[key];
-    //         }
-    //     });
-    // }
+
 
     const onSubmit = (data: FormValues) => {
-        // removeEmptyFields(data);
-        // message.info('Creating Card');
-        mutate(data)
-    }
-
-    // image handle function
-    const [image, setImage] = useState('')
-    const handleImage = (e: any) => {
-        console.log(e.target.files)
-        setImage(e.target.files[0])
+        // mutate(data)
+        // console.log(cardId, image, logo, title, company)
     }
 
 
-    const [addPhone, setAddPhone] = useState(false)
-    const [addEmail, setAddEmail] = useState(false)
-    const [addAddress, setAddAddress] = useState(false)
-    const [addWebsite, setAddWebsite] = useState(false)
-    const [addLink, setAddLink] = useState(false)
-    const [addGithub, setAddGithub] = useState(false)
-    const [addTwitter, setAddTwitter] = useState(false)
-    const [addInstagram, setAddInstagram] = useState(false)
-    const [addLinkedIn, setAddLinkedIn] = useState(false)
-    const [addFacebook, setAddFacebook] = useState(false)
-    const [addYoutube, setAddYoutube] = useState(false)
-    const [addWhatsapp, setAddWhatsapp] = useState(false)
 
+    const [addPhone, setAddPhone] = useState(() => {
+        if (phone == null || phone == '') {
+            return false
+        } else return true
+    })
+    const [addEmail, setAddEmail] = useState(() => {
+        if (email == null || email == '') {
+            return false
+        } else return true
+    })
+    const [addAddress, setAddAddress] = useState(() => {
+        if (address == null || address == '') {
+            return false
+        } else return true
+    })
+    const [addWebsite, setAddWebsite] = useState(() => {
+        if (websitelink == null || websitelink == '') {
+            return false
+        } else return true
+    })
+    const [addLink, setAddLink] = useState(() => {
+        if (link == null || link == '') {
+            return false
+        } else return true
+    })
+    const [addGithub, setAddGithub] = useState(() => {
+        if (github == null || github == '') {
+            return false
+        } else return true
+    })
+    const [addTwitter, setAddTwitter] = useState(() => {
+        if (twitter == null || twitter == '') {
+            return false
+        } else return true
+    })
+    const [addInstagram, setAddInstagram] = useState(() => {
+        if (instagram == null || instagram == '') {
+            return false
+        } else return true
+    })
+    const [addLinkedIn, setAddLinkedIn] = useState(() => {
+        if (linkedin == null || linkedin == '') {
+            return false
+        } else return true
+    })
+    const [addFacebook, setAddFacebook] = useState(() => {
+        if (facebook == null || facebook == '') {
+            return false
+        } else return true
+    })
+    const [addYoutube, setAddYoutube] = useState(() => {
+        if (youtube == null || youtube == '') {
+            return false
+        } else return true
+    })
+    const [addWhatsapp, setAddWhatsapp] = useState(() => {
+        if (whatsapp == null || whatsapp == '') {
+            return false
+        } else return true
+    })
+   
     const mockdata = [
         { title: 'Phone', icon: Phone, color: 'violet' },
         { title: 'Email', icon: Mail, color: 'orange' },
@@ -171,6 +243,7 @@ const New = () => {
     }
 
 
+
     // Selectors Part-2 START
     const { classes, theme } = useStyles();
 
@@ -182,38 +255,31 @@ const New = () => {
             </Text>
         </UnstyledButton>
     ));
+
+   
     // Selectors Part-2 END
 
     return (
 
         <div >
-            <div className='my-5'>
-                <div className='px-3'>
-                    <a href='/app/'><button className='bg-blue-500 hover:bg-blue-400 text-white rounded-full font-bold py-1 px-2 border-b-4 border-blue-700 hover:border-blue-500 '><IoArrowBack size={30} /></button></a>
-                    <label className="text-gray-500 font-bold pl-5">
-                        Cards Details
-                    </label>
-                </div>
-
-            </div>
-            <div className='lg:flex '>
-                <div className='text-center lg:w-1/3' >
+            <div className='lg:flex lg:justify-center'>
+                <div className='text-center lg:w-1/2' >
                     <div className='border border-solid p-5 rounded mx-10'>
                         <form onSubmit={handleSubmit(onSubmit)} noValidate>
                             <div>
                                 <div >
                                     <label className='font-bold flex mb-3' htmlFor="company">Image URL</label>
-                                    <input className='block w-[80%] py-1.5 px-3 text-sm leading-snug border border-x border-solid rounded' type="text" id="company" {...register("imgUrl")} />
+                                    <input className='block w-[95%] py-1.5 px-3 text-sm leading-snug border border-x border-solid rounded' type="text" id="company" {...register("imgUrl")} />
 
                                 </div>
                                 <div >
                                     <label className='font-bold flex mb-3' htmlFor="company">Logo URL</label>
-                                    <input className='block w-[80%] py-1.5 px-3 text-sm leading-snug border border-x border-solid rounded' type="text" id="company" {...register("logoUrl")} />
+                                    <input className='block w-[95%] py-1.5 px-3 text-sm leading-snug border border-x border-solid rounded' type="text" id="company" {...register("logoUrl")} />
 
                                 </div>
                                 <div className=''>
                                     <label className='font-bold flex mb-3' htmlFor="firstname">Name</label>
-                                    <input className='block w-[80%] py-1.5 px-3 text-sm leading-snug border border-x border-solid rounded' type="text" id="name" {...register("name", {
+                                    <input className='block w-[95%] py-1.5 px-3 text-sm leading-snug border border-x border-solid rounded' type="text" id="name" {...register("name", {
                                         required: {
                                             value: true,
                                             message: "Name is required"
@@ -223,16 +289,16 @@ const New = () => {
                                     <p className='text-red-600 text-[12px] text-left'>{errors.name?.message}</p>
                                 </div>
 
-                               
+
                                 <div className='flex-col'>
                                     <label className='font-bold flex mb-3' htmlFor="title">Title</label>
-                                    <input className='block w-[80%] py-1.5 px-3 text-sm leading-snug border border-x border-solid rounded resize-none' id="title" {...register("title")} />
+                                    <input className='block w-[95%] py-1.5 px-3 text-sm leading-snug border border-x border-solid rounded resize-none' id="title" {...register("title")} />
 
                                 </div>
-                                
+
                                 <div >
                                     <label className='font-bold flex mb-3' htmlFor="company">Company</label>
-                                    <input className='block w-[80%] py-1.5 px-3 text-sm leading-snug border border-x border-solid rounded' type="text" id="company" {...register("company")} />
+                                    <input className='block w-[95%] py-1.5 px-3 text-sm leading-snug border border-x border-solid rounded' type="text" id="company" {...register("company")} />
 
                                 </div>
 
@@ -240,12 +306,12 @@ const New = () => {
 
                                 <div className={`${addPhone ? 'block' : 'hidden'}`} >
                                     <label className='font-bold flex mb-3' htmlFor="phone">Phone</label>
-                                    <input className='block w-[80%] py-1.5 px-3 text-sm leading-snug border border-x border-solid rounded' type="text" id="phone" {...register("phone")} />
+                                    <input className='block w-[95%] py-1.5 px-3 text-sm leading-snug border border-x border-solid rounded' type="text" id="phone" {...register("phone")} />
 
                                 </div>
                                 <div className={`${addEmail ? 'block' : 'hidden'}`} >
                                     <label className='font-bold flex mb-3' htmlFor="email">Email</label>
-                                    <input className='block w-[80%] py-1.5 px-3 text-sm leading-snug border border-x border-solid rounded' type="email" id="email" {...register("email")} />
+                                    <input className='block w-[95%] py-1.5 px-3 text-sm leading-snug border border-x border-solid rounded' type="email" id="email" {...register("email")} />
 
                                 </div>
                                 <div className={`${addAddress ? 'block' : 'hidden'}`} >
@@ -255,47 +321,47 @@ const New = () => {
                                 </div>
                                 <div className={`${addWebsite ? 'block' : 'hidden'}`} >
                                     <label className='font-bold flex mb-3' htmlFor="websitelink">Website</label>
-                                    <input className='block w-[80%] py-1.5 px-3 text-sm leading-snug border border-x border-solid rounded' type="text" id="websitelink" {...register("websitelink")} />
+                                    <input className='block w-[95%] py-1.5 px-3 text-sm leading-snug border border-x border-solid rounded' type="text" id="websitelink" {...register("websitelink")} />
 
                                 </div>
                                 <div className={`${addLink ? 'block' : 'hidden'}`} >
                                     <label className='font-bold flex mb-3' htmlFor="link">Link</label>
-                                    <input className='block w-[80%] py-1.5 px-3 text-sm leading-snug border border-x border-solid rounded' type="text" id="link" {...register("link")} />
+                                    <input className='block w-[95%] py-1.5 px-3 text-sm leading-snug border border-x border-solid rounded' type="text" id="link" {...register("link")} />
 
                                 </div>
                                 <div className={`${addGithub ? 'block' : 'hidden'}`} >
                                     <label className='font-bold flex mb-3' htmlFor="github">Github</label>
-                                    <input className='block w-[80%] py-1.5 px-3 text-sm leading-snug border border-x border-solid rounded' type="text" id="github" {...register("github")} />
+                                    <input className='block w-[95%] py-1.5 px-3 text-sm leading-snug border border-x border-solid rounded' type="text" id="github" {...register("github")} />
 
                                 </div>
                                 <div className={`${addTwitter ? 'block' : 'hidden'}`} >
                                     <label className='font-bold flex mb-3' htmlFor="twitter">Twitter</label>
-                                    <input className='block w-[80%] py-1.5 px-3 text-sm leading-snug border border-x border-solid rounded' type="text" id="twitter" {...register("twitter")} />
+                                    <input className='block w-[95%] py-1.5 px-3 text-sm leading-snug border border-x border-solid rounded' type="text" id="twitter" {...register("twitter")} />
 
                                 </div>
                                 <div className={`${addInstagram ? 'block' : 'hidden'}`} >
                                     <label className='font-bold flex mb-3' htmlFor="instagram">Instagram</label>
-                                    <input className='block w-[80%] py-1.5 px-3 text-sm leading-snug border border-x border-solid rounded' type="text" id="instagram" {...register("instagram")} />
+                                    <input className='block w-[95%] py-1.5 px-3 text-sm leading-snug border border-x border-solid rounded' type="text" id="instagram" {...register("instagram")} />
 
                                 </div>
                                 <div className={`${addLinkedIn ? 'block' : 'hidden'}`} >
                                     <label className='font-bold flex mb-3' htmlFor="linkedlink">LinkedIn</label>
-                                    <input className='block w-[80%] py-1.5 px-3 text-sm leading-snug border border-x border-solid rounded' type="text" id="linkedlink" {...register("linkedin")} />
+                                    <input className='block w-[95%] py-1.5 px-3 text-sm leading-snug border border-x border-solid rounded' type="text" id="linkedlink" {...register("linkedin")} />
 
                                 </div>
                                 <div className={`${addFacebook ? 'block' : 'hidden'}`} >
                                     <label className='font-bold flex mb-3' htmlFor="facebook">Facebook</label>
-                                    <input className='block w-[80%] py-1.5 px-3 text-sm leading-snug border border-x border-solid rounded' type="text" id="facebook" {...register("facebook")} />
+                                    <input className='block w-[95%] py-1.5 px-3 text-sm leading-snug border border-x border-solid rounded' type="text" id="facebook" {...register("facebook")} />
 
                                 </div>
                                 <div className={`${addYoutube ? 'block' : 'hidden'}`} >
                                     <label className='font-bold flex mb-3' htmlFor="youtube">Youtube</label>
-                                    <input className='block w-[80%] py-1.5 px-3 text-sm leading-snug border border-x border-solid rounded' type="text" id="youtube" {...register("youtube")} />
+                                    <input className='block w-[95%] py-1.5 px-3 text-sm leading-snug border border-x border-solid rounded' type="text" id="youtube" {...register("youtube")} />
 
                                 </div>
                                 <div className={`${addWhatsapp ? 'block' : 'hidden'}`} >
                                     <label className='font-bold flex mb-3' htmlFor="whatsapp">Whatsapp</label>
-                                    <input className='block w-[80%] py-1.5 px-3 text-sm leading-snug border border-x border-solid rounded' type="text" id="whatsapp" {...register("whatsapp")} />
+                                    <input className='block w-[95%] py-1.5 px-3 text-sm leading-snug border border-x border-solid rounded' type="text" id="whatsapp" {...register("whatsapp")} />
 
                                 </div>
 
@@ -303,8 +369,9 @@ const New = () => {
 
 
                             <div className='py-3'>
-                                <Button htmlType='submit' type='primary' loading={isCreating} className="text-white font-bold x-4 rounded">
-                                    Save
+                                {/* loading */}
+                                <Button htmlType='submit' type='primary' className="text-white font-bold x-4 rounded">
+                                    Save Changes
                                 </Button>
                             </div>
                         </form>
@@ -315,7 +382,7 @@ const New = () => {
 
                 {/* Selectors Part-3 START */}
 
-                <div className='lg:w-1/4 lg:pt-0 lg:px-0 pt-10 px-10'>
+                <div className='lg:w-1/3 lg:pt-0 lg:px-0 pt-10 px-10'>
                     <Card withBorder radius="md" className={classes.card}>
                         <Group position="apart">
                             <Text className={classes.title}>Add/remove fields</Text>
@@ -330,4 +397,4 @@ const New = () => {
     )
 }
 
-export default New
+export default EditForm
