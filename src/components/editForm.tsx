@@ -105,21 +105,21 @@ const EditForm = ({ cardId, image, name, title, company, logo, phone, email, add
         youtube: youtube,
         whatsapp: whatsapp,
     }
-    // const { mutate, isLoading: isCreating } = api.cards.createCard.useMutation({
-    //     onSuccess: () => {
-    //         message.success('Card Created!')
-    //         router.push(`/app/`)
-    //     },
-    //     onError: (e) => {
-    //         const errorMessage = e.data?.zodError?.fieldErrors.content;
-    //         if (errorMessage && errorMessage[0]) {
-    //             message.error(errorMessage[0]);
-    //         } else {
-    //             message.error("Failed to create! Please try again later.");
-    //         }
-    //     }
+    const { mutate:makeEdit, isLoading } = api.cards.EditCardById.useMutation({
+        onSuccess: () => {
+            message.success('Changes Saved!')
+            router.reload()
+        },
+        onError: (e) => {
+            const errorMessage = e.data?.zodError?.fieldErrors.content;
+            if (errorMessage && errorMessage[0]) {
+                message.error(errorMessage[0]);
+            } else {
+                message.error("Failed to save changes. Please try again later.");
+            }
+        }
 
-    // });
+    });
     const form = useForm<FormValues>({
         defaultValues: preloadedValues
     })
@@ -130,8 +130,15 @@ const EditForm = ({ cardId, image, name, title, company, logo, phone, email, add
 
 
     const onSubmit = (data: FormValues) => {
-        // mutate(data)
-        // console.log(cardId, image, logo, title, company)
+        let cardObject={
+            cardId: cardId
+        }
+        
+        let submitData ={
+            ...cardObject,...data
+        }
+
+        makeEdit(submitData)
     }
 
 
@@ -263,7 +270,7 @@ const EditForm = ({ cardId, image, name, title, company, logo, phone, email, add
 
         <div >
             <div className='lg:flex lg:justify-center'>
-                <div className='text-center lg:w-1/2' >
+                <div className='text-center lg:w-[50%]' >
                     <div className='border border-solid p-5 rounded mx-10'>
                         <form onSubmit={handleSubmit(onSubmit)} noValidate>
                             <div>
@@ -370,7 +377,7 @@ const EditForm = ({ cardId, image, name, title, company, logo, phone, email, add
 
                             <div className='py-3'>
                                 {/* loading */}
-                                <Button htmlType='submit' type='primary' className="text-white font-bold x-4 rounded">
+                                <Button htmlType='submit' type='primary' loading={isLoading} className="text-white font-bold x-4 rounded">
                                     Save Changes
                                 </Button>
                             </div>
@@ -382,7 +389,7 @@ const EditForm = ({ cardId, image, name, title, company, logo, phone, email, add
 
                 {/* Selectors Part-3 START */}
 
-                <div className='lg:w-1/3 lg:pt-0 lg:px-0 pt-10 px-10'>
+                <div className='lg:w-[40%] lg:pt-0 lg:px-0 pt-10 px-10'>
                     <Card withBorder radius="md" className={classes.card}>
                         <Group position="apart">
                             <Text className={classes.title}>Add/remove fields</Text>

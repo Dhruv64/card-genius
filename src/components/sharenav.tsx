@@ -141,7 +141,7 @@ const Sharenav = ({ cardId, image, name, title, company, logo, phone, email, add
                                                     ]}>
                                                     <p>This action cannot be reversed</p>
                                                 </Modal>
-                                                <Modal title="Edit Card" width={1200} open={isEditModalOpen} onCancel={() => { setIsEditModalOpen(false) }}
+                                                <Modal title="Edit Card" width={1000} open={isEditModalOpen} onCancel={() => { setIsEditModalOpen(false) }}
                                                     footer={[
                                                         <Button onClick={() => { setIsEditModalOpen(false) }}>
                                                             Cancel
