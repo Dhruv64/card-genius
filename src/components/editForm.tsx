@@ -4,9 +4,9 @@ import { useForm } from 'react-hook-form';
 import { useState } from 'react';
 import { api } from '~/utils/api';
 import { message, Button } from "antd"
-import { createStyles, Card, Text, SimpleGrid, UnstyledButton, Anchor, Group, rem, } from '@mantine/core';
+import { createStyles, Card, Text, SimpleGrid, UnstyledButton, Input, Group, rem, Tooltip, Textarea, } from '@mantine/core';
 import { CgWebsite } from "react-icons/cg";
-import { BrandInstagram, BrandLinkedin, BrandTwitter, BrandWhatsapp, BrandYoutube, BrandFacebook, BrandGithub, Mail, Link, MapPin, Phone, FileDescription, BrandSnapchat, BrandTiktok, BrandPaypal, BrandCashapp, CalendarEvent, BrandDiscord, BrandTwitch, BrandTelegram, BrandSkype, BrandWechat, DeviceNintendo } from 'tabler-icons-react';
+import { BrandInstagram, BrandLinkedin, BrandTwitter, BrandWhatsapp, BrandYoutube, BrandFacebook, BrandGithub, Mail, Link, MapPin, Phone, FileDescription, BrandSnapchat, BrandTiktok, BrandPaypal, BrandCashapp, CalendarEvent, BrandDiscord, BrandTwitch, BrandTelegram, BrandSkype, BrandWechat, DeviceNintendo, AlertCircle } from 'tabler-icons-react';
 import { useRouter } from 'next/router';
 // Selectors Part-1 Start
 
@@ -273,20 +273,20 @@ const EditForm = ({ cardId, image, name, title, company, logo, phone, email, add
                 <div className='text-center lg:w-[50%]' >
                     <div className='border border-solid p-5 rounded mx-10'>
                         <form onSubmit={handleSubmit(onSubmit)} noValidate>
-                            <div>
+                            <div className='space-y-2' >
                                 <div >
-                                    <label className='font-bold flex mb-3' htmlFor="company">Image URL</label>
-                                    <input className='block w-[95%] py-1.5 px-3 text-sm leading-snug border border-x border-solid rounded' type="text" id="company" {...register("imgUrl")} />
+                                    <label className='font-semibold flex mb-1' htmlFor="company">Cover Image URL</label>
+                                    <Input className='block w-[95%] py-1 text-sm leading-snug ' type="text" id="company" {...register("imgUrl")} />
 
                                 </div>
                                 <div >
-                                    <label className='font-bold flex mb-3' htmlFor="company">Logo URL</label>
-                                    <input className='block w-[95%] py-1.5 px-3 text-sm leading-snug border border-x border-solid rounded' type="text" id="company" {...register("logoUrl")} />
+                                    <label className='font-semibold flex mb-1' htmlFor="company">Logo URL</label>
+                                    <Input className='block w-[95%] py-1 text-sm leading-snug ' type="text" id="company" {...register("logoUrl")} />
 
                                 </div>
                                 <div className=''>
-                                    <label className='font-bold flex mb-3' htmlFor="firstname">Name</label>
-                                    <input className='block w-[95%] py-1.5 px-3 text-sm leading-snug border border-x border-solid rounded' type="text" id="name" {...register("name", {
+                                    <label className='font-semibold flex mb-1' htmlFor="firstname">Name <span className='ml-1 text-red-600'>*</span></label>
+                                    <Input className='block w-[95%] py-1 text-sm leading-snug ' type="text" id="name" {...register("name", {
                                         required: {
                                             value: true,
                                             message: "Name is required"
@@ -298,77 +298,108 @@ const EditForm = ({ cardId, image, name, title, company, logo, phone, email, add
 
 
                                 <div className='flex-col'>
-                                    <label className='font-bold flex mb-3' htmlFor="title">Title</label>
-                                    <input className='block w-[95%] py-1.5 px-3 text-sm leading-snug border border-x border-solid rounded resize-none' id="title" {...register("title")} />
+                                    <label className='font-semibold flex mb-1' htmlFor="title">Title</label>
+                                    <Input className='block w-[95%] py-1 text-sm leading-snug  resize-none' id="title" {...register("title")} />
 
                                 </div>
 
                                 <div >
-                                    <label className='font-bold flex mb-3' htmlFor="company">Company</label>
-                                    <input className='block w-[95%] py-1.5 px-3 text-sm leading-snug border border-x border-solid rounded' type="text" id="company" {...register("company")} />
+                                    <label className='font-semibold flex mb-1' htmlFor="company">Company</label>
+                                    <Input className='block w-[95%] py-1 text-sm leading-snug ' type="text" id="company" {...register("company")} />
 
                                 </div>
 
                                 {/* Fields */}
 
                                 <div className={`${addPhone ? 'block' : 'hidden'}`} >
-                                    <label className='font-bold flex mb-3' htmlFor="phone">Phone</label>
-                                    <input className='block w-[95%] py-1.5 px-3 text-sm leading-snug border border-x border-solid rounded' type="text" id="phone" {...register("phone")} />
+                                    <label className='font-semibold flex mb-1' htmlFor="phone">Phone</label>
+                                    <Input className='block w-[95%] py-1 text-sm leading-snug ' type="text" id="phone" {...register("phone")} />
 
                                 </div>
                                 <div className={`${addEmail ? 'block' : 'hidden'}`} >
-                                    <label className='font-bold flex mb-3' htmlFor="email">Email</label>
-                                    <input className='block w-[95%] py-1.5 px-3 text-sm leading-snug border border-x border-solid rounded' type="email" id="email" {...register("email")} />
+                                    <label className='font-semibold flex mb-1' htmlFor="email">Email</label>
+                                    <Input className='block w-[95%] py-1 text-sm leading-snug ' type="email" id="email" {...register("email")} />
 
                                 </div>
                                 <div className={`${addAddress ? 'block' : 'hidden'}`} >
-                                    <label className='font-bold flex mb-3' htmlFor="address">Address</label>
-                                    <textarea className='block w-[95%] h-20 py-1.5 px-3 text-sm leading-snug border border-x border-solid rounded resize-none' type="text" id="address" {...register("address")} />
+                                    <label className='font-semibold flex mb-1' htmlFor="address">Address</label>
+                                    <Textarea className='block w-[95%] py-1 text-sm leading-snug  resize-none' type="text" id="address" {...register("address")} />
 
                                 </div>
                                 <div className={`${addWebsite ? 'block' : 'hidden'}`} >
-                                    <label className='font-bold flex mb-3' htmlFor="websitelink">Website</label>
-                                    <input className='block w-[95%] py-1.5 px-3 text-sm leading-snug border border-x border-solid rounded' type="text" id="websitelink" {...register("websitelink")} />
+                                    <label className='font-semibold flex mb-1' htmlFor="websitelink">Website</label>
+                                    <Input className='block w-[95%] py-1 text-sm leading-snug ' type="text" id="websitelink" {...register("websitelink")} />
 
                                 </div>
                                 <div className={`${addLink ? 'block' : 'hidden'}`} >
-                                    <label className='font-bold flex mb-3' htmlFor="link">Link</label>
-                                    <input className='block w-[95%] py-1.5 px-3 text-sm leading-snug border border-x border-solid rounded' type="text" id="link" {...register("link")} />
+                                    <label className='font-semibold flex mb-1' htmlFor="link">Link</label>
+                                    <Input className='block w-[95%] py-1 text-sm leading-snug ' type="text" id="link" {...register("link")} />
 
                                 </div>
                                 <div className={`${addGithub ? 'block' : 'hidden'}`} >
-                                    <label className='font-bold flex mb-3' htmlFor="github">Github</label>
-                                    <input className='block w-[95%] py-1.5 px-3 text-sm leading-snug border border-x border-solid rounded' type="text" id="github" {...register("github")} />
+                                    <label className='font-semibold flex mb-1' htmlFor="github">Github</label>
+                                    <Input className='block w-[95%] py-1 text-sm leading-snug ' type="text" id="github" {...register("github")}
+                                        rightSection={
+                                            <Tooltip label="Enter your Github username" position="top-end" withArrow>
+                                                <div>
+                                                    <AlertCircle size="1rem" style={{ display: 'block', opacity: 0.5 }} />
+                                                </div>
+                                            </Tooltip>} />
 
                                 </div>
                                 <div className={`${addTwitter ? 'block' : 'hidden'}`} >
-                                    <label className='font-bold flex mb-3' htmlFor="twitter">Twitter</label>
-                                    <input className='block w-[95%] py-1.5 px-3 text-sm leading-snug border border-x border-solid rounded' type="text" id="twitter" {...register("twitter")} />
+                                    <label className='font-semibold flex mb-1' htmlFor="twitter">Twitter</label>
+                                    <Input className='block w-[95%] py-1 text-sm leading-snug ' type="text" id="twitter" {...register("twitter")}
+                                        rightSection={
+                                            <Tooltip label="Enter your twitter username" position="top-end" withArrow>
+                                                <div>
+                                                    <AlertCircle size="1rem" style={{ display: 'block', opacity: 0.5 }} />
+                                                </div>
+                                            </Tooltip>}
+                                    />
 
                                 </div>
                                 <div className={`${addInstagram ? 'block' : 'hidden'}`} >
-                                    <label className='font-bold flex mb-3' htmlFor="instagram">Instagram</label>
-                                    <input className='block w-[95%] py-1.5 px-3 text-sm leading-snug border border-x border-solid rounded' type="text" id="instagram" {...register("instagram")} />
+                                    <label className='font-semibold flex mb-1' htmlFor="instagram">Instagram</label>
+                                    <Input className='block w-[95%] py-1 text-sm leading-snug ' type="text" id="instagram" {...register("instagram")}
+                                        rightSection={
+                                            <Tooltip label="Enter your instagram username" position="top-end" withArrow>
+                                                <div>
+                                                    <AlertCircle size="1rem" style={{ display: 'block', opacity: 0.5 }} />
+                                                </div>
+                                            </Tooltip>} />
 
                                 </div>
                                 <div className={`${addLinkedIn ? 'block' : 'hidden'}`} >
-                                    <label className='font-bold flex mb-3' htmlFor="linkedlink">LinkedIn</label>
-                                    <input className='block w-[95%] py-1.5 px-3 text-sm leading-snug border border-x border-solid rounded' type="text" id="linkedlink" {...register("linkedin")} />
+                                    <label className='font-semibold flex mb-1' htmlFor="linkedlink">LinkedIn</label>
+                                    <Input className='block w-[95%] py-1 text-sm leading-snug ' type="text" id="linkedlink" {...register("linkedin")}
+                                        rightSection={
+                                            <Tooltip label="Enter your LinkedIn username" position="top-end" withArrow>
+                                                <div>
+                                                    <AlertCircle size="1rem" style={{ display: 'block', opacity: 0.5 }} />
+                                                </div>
+                                            </Tooltip>} />
 
                                 </div>
                                 <div className={`${addFacebook ? 'block' : 'hidden'}`} >
-                                    <label className='font-bold flex mb-3' htmlFor="facebook">Facebook</label>
-                                    <input className='block w-[95%] py-1.5 px-3 text-sm leading-snug border border-x border-solid rounded' type="text" id="facebook" {...register("facebook")} />
+                                    <label className='font-semibold flex mb-1' htmlFor="facebook">Facebook</label>
+                                    <Input className='block w-[95%] py-1 text-sm leading-snug ' type="text" id="facebook" {...register("facebook")} />
 
                                 </div>
                                 <div className={`${addYoutube ? 'block' : 'hidden'}`} >
-                                    <label className='font-bold flex mb-3' htmlFor="youtube">Youtube</label>
-                                    <input className='block w-[95%] py-1.5 px-3 text-sm leading-snug border border-x border-solid rounded' type="text" id="youtube" {...register("youtube")} />
+                                    <label className='font-semibold flex mb-1' htmlFor="youtube">Youtube</label>
+                                    <Input className='block w-[95%] py-1 text-sm leading-snug ' type="text" id="youtube" {...register("youtube")} />
 
                                 </div>
                                 <div className={`${addWhatsapp ? 'block' : 'hidden'}`} >
-                                    <label className='font-bold flex mb-3' htmlFor="whatsapp">Whatsapp<span className='font-normal ml-1'> (with country code)</span></label>
-                                    <input className='block w-[95%] py-1.5 px-3 text-sm leading-snug border border-x border-solid rounded' type="text" id="whatsapp" {...register("whatsapp")} />
+                                    <label className='font-semibold flex mb-1' htmlFor="whatsapp">Whatsapp<span className='font-normal ml-1'> (with country code)</span></label>
+                                    <Input className='block w-[95%] py-1 text-sm leading-snug ' type="text" id="whatsapp" {...register("whatsapp")}
+                                        rightSection={
+                                            <Tooltip label="Enter with country code for example 91XXXXXXXXXX" position="top-end" withArrow>
+                                                <div>
+                                                    <AlertCircle size="1rem" style={{ display: 'block', opacity: 0.5 }} />
+                                                </div>
+                                            </Tooltip>} />
 
                                 </div>
 
