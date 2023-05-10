@@ -150,7 +150,7 @@ const Sharenav = ({ cardId, image, name, title, company, logo, phone, email, add
 
                                                     ]}>
                                                     <>
-                                                        <EditForm cardId={cardId} image={image} name={name} title={title} logo={logo} company={company} phone={phone} email={email} address={address} websitelink={websitelink} link={link} github={github} twitter={twitter} instagram={instagram} linkedin={linkedin} facebook={facebook} youtube={youtube} whatsapp={whatsapp}  />
+                                                        <EditForm cardId={cardId} image={image} name={name} title={title} logo={logo} company={company} phone={phone} email={email} address={address} websitelink={websitelink} link={link} github={github} twitter={twitter} instagram={instagram} linkedin={linkedin} facebook={facebook} youtube={youtube} whatsapp={whatsapp} />
                                                     </>
                                                 </Modal>
                                             </div>
@@ -210,6 +210,18 @@ const Sharenav = ({ cardId, image, name, title, company, logo, phone, email, add
 
                     <Disclosure.Panel className="sm:hidden">
                         <div className="space-y-1 px-2 pb-3 pt-2">
+                            <Disclosure.Button
+                                as="a"
+                                href='/app/'
+                                className={classNames(
+                                    'text-gray-300 hover:bg-gray-700 hover:text-white no-underline',
+                                    'block rounded-md px-3 py-2 text-base font-medium'
+                                )}
+                                aria-current={false ? 'page' : undefined}
+                            >
+                                <div className='flex space-x-2 cursor-pointer'><ArrowBack />
+                                    <span > Your Cards</span></div>
+                            </Disclosure.Button>
                             <Disclosure.Button
 
                                 as="a"

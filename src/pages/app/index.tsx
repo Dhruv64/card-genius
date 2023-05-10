@@ -13,7 +13,7 @@ import Link from 'next/link';
 
 const index = () => {
   const { data } = api.cards.getCardsByUserId.useQuery()
-  console.log(data)
+  // console.log(data)
   const { data: session } = useSession();
 
   if (!session) {
@@ -75,7 +75,7 @@ const index = () => {
 
   return (
 
-    <div className='bg-blue-200'>
+    <div className='bg-blue-200 h-[100vh]'>
       <Head>
         <title>
           Your Cards

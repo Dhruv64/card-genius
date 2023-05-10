@@ -1,5 +1,4 @@
 import React from 'react';
-import { IoArrowBack } from "react-icons/io5";
 import { useForm } from 'react-hook-form';
 import { useState } from 'react';
 import { api } from '~/utils/api';
@@ -8,6 +7,9 @@ import { createStyles, Card, Text, SimpleGrid, UnstyledButton, Anchor, Group, re
 import { CgWebsite } from "react-icons/cg";
 import { BrandInstagram, BrandLinkedin, BrandTwitter, BrandWhatsapp, BrandYoutube, BrandFacebook, BrandGithub, Mail, Link, MapPin, Phone, FileDescription, BrandSnapchat, BrandTiktok, BrandPaypal, BrandCashapp, CalendarEvent, BrandDiscord, BrandTwitch, BrandTelegram, BrandSkype, BrandWechat, DeviceNintendo } from 'tabler-icons-react';
 import { useRouter } from 'next/router';
+import Createnav from '~/components/createnav';
+import BadgeCard from '~/components/previewCard';
+import Head from 'next/head';
 // Selectors Part-1 Start
 
 
@@ -67,10 +69,11 @@ type FormValues = {
 
 const New = () => {
     const router = useRouter()
-    const { mutate, isLoading: isCreating } = api.cards.createCard.useMutation({
+    const { mutate, isLoading: isCreating, data } = api.cards.createCard.useMutation({
         onSuccess: () => {
             message.success('Card Created!')
             router.push(`/app/`)
+            console.log(data)
         },
         onError: (e) => {
             const errorMessage = e.data?.zodError?.fieldErrors.content;
@@ -83,34 +86,32 @@ const New = () => {
 
     });
     const form = useForm<FormValues>()
-    const { register, control, handleSubmit, formState } = form;
-    // const { fields, append, prepend, remove, swap, move, insert } = useFieldArray({
-    //     control, // control props comes from useForm (optional: if you are using FormContext)
-    //     name: "fields", // unique name for your Field Array
-    //   });
+    const { register, watch, handleSubmit, formState } = form;
+
+    const watchimgUrl = watch("imgUrl")
+    const watchlogoUrl = watch("logoUrl")
+    const watchname = watch("name")
+    const watchtitle = watch("title")
+    const watchcompany = watch("company")
+    const watchphone = watch("phone")
+    const watchemail = watch("email")
+    const watchaddress = watch("address")
+    const watchwebsitelink = watch("websitelink")
+    const watchlink = watch("link")
+    const watchgithub = watch("github")
+    const watchtwitter = watch("twitter")
+    const watchinstagram = watch("instagram")
+    const watchlinkedin = watch("linkedin")
+    const watchfacebook = watch("facebook")
+    const watchyoutube = watch("youtube")
+    const watchwhatsapp = watch("whatsapp")
 
     const { errors } = formState;
-    // const removeEmptyFields = (data: FormValues) => {
-    //     Object.keys(data).forEach(key => {
-    //         if (data[key] === '' || data[key] == null) {
-    //             delete data[key];
-    //         }
-    //     });
-    // }
+
 
     const onSubmit = (data: FormValues) => {
-        // removeEmptyFields(data);
-        // message.info('Creating Card');
         mutate(data)
     }
-
-    // image handle function
-    const [image, setImage] = useState('')
-    const handleImage = (e: any) => {
-        console.log(e.target.files)
-        setImage(e.target.files[0])
-    }
-
 
     const [addPhone, setAddPhone] = useState(false)
     const [addEmail, setAddEmail] = useState(false)
@@ -187,33 +188,28 @@ const New = () => {
     return (
 
         <div >
-            <div className='my-5'>
-                <div className='px-3'>
-                    <a href='/app/'><button className='bg-blue-500 hover:bg-blue-400 text-white rounded-full font-bold py-1 px-2 border-b-4 border-blue-700 hover:border-blue-500 '><IoArrowBack size={30} /></button></a>
-                    <label className="text-gray-500 font-bold pl-5">
-                        Cards Details
-                    </label>
-                </div>
-
-            </div>
-            <div className='lg:flex '>
+            <Head>
+                <title>Create Card</title>
+            </Head>
+            <Createnav />
+            <div className='lg:flex lg:justify-center lg:mt-10 mt-5'>
                 <div className='text-center lg:w-1/3' >
                     <div className='border border-solid p-5 rounded mx-10'>
                         <form onSubmit={handleSubmit(onSubmit)} noValidate>
                             <div>
                                 <div >
-                                    <label className='font-bold flex mb-3' htmlFor="company">Image URL</label>
-                                    <input className='block w-[80%] py-1.5 px-3 text-sm leading-snug border border-x border-solid rounded' type="text" id="company" {...register("imgUrl")} />
+                                    <label className='font-bold flex mb-3' htmlFor="company">Cover Image URL</label>
+                                    <input className='block w-[95%] py-1.5 px-3 text-sm leading-snug border border-x border-solid rounded' type="text" id="company" {...register("imgUrl")} />
 
                                 </div>
                                 <div >
                                     <label className='font-bold flex mb-3' htmlFor="company">Logo URL</label>
-                                    <input className='block w-[80%] py-1.5 px-3 text-sm leading-snug border border-x border-solid rounded' type="text" id="company" {...register("logoUrl")} />
+                                    <input className='block w-[95%] py-1.5 px-3 text-sm leading-snug border border-x border-solid rounded' type="text" id="company" {...register("logoUrl")} />
 
                                 </div>
                                 <div className=''>
                                     <label className='font-bold flex mb-3' htmlFor="firstname">Name</label>
-                                    <input className='block w-[80%] py-1.5 px-3 text-sm leading-snug border border-x border-solid rounded' type="text" id="name" {...register("name", {
+                                    <input className='block w-[95%] py-1.5 px-3 text-sm leading-snug border border-x border-solid rounded' type="text" id="name" {...register("name", {
                                         required: {
                                             value: true,
                                             message: "Name is required"
@@ -223,16 +219,16 @@ const New = () => {
                                     <p className='text-red-600 text-[12px] text-left'>{errors.name?.message}</p>
                                 </div>
 
-                               
+
                                 <div className='flex-col'>
                                     <label className='font-bold flex mb-3' htmlFor="title">Title</label>
-                                    <input className='block w-[80%] py-1.5 px-3 text-sm leading-snug border border-x border-solid rounded resize-none' id="title" {...register("title")} />
+                                    <input className='block w-[95%] py-1.5 px-3 text-sm leading-snug border border-x border-solid rounded resize-none' id="title" {...register("title")} />
 
                                 </div>
-                                
+
                                 <div >
                                     <label className='font-bold flex mb-3' htmlFor="company">Company</label>
-                                    <input className='block w-[80%] py-1.5 px-3 text-sm leading-snug border border-x border-solid rounded' type="text" id="company" {...register("company")} />
+                                    <input className='block w-[95%] py-1.5 px-3 text-sm leading-snug border border-x border-solid rounded' type="text" id="company" {...register("company")} />
 
                                 </div>
 
@@ -240,62 +236,62 @@ const New = () => {
 
                                 <div className={`${addPhone ? 'block' : 'hidden'}`} >
                                     <label className='font-bold flex mb-3' htmlFor="phone">Phone</label>
-                                    <input className='block w-[80%] py-1.5 px-3 text-sm leading-snug border border-x border-solid rounded' type="text" id="phone" {...register("phone")} />
+                                    <input className='block w-[95%] py-1.5 px-3 text-sm leading-snug border border-x border-solid rounded' type="text" id="phone" {...register("phone")} />
 
                                 </div>
                                 <div className={`${addEmail ? 'block' : 'hidden'}`} >
                                     <label className='font-bold flex mb-3' htmlFor="email">Email</label>
-                                    <input className='block w-[80%] py-1.5 px-3 text-sm leading-snug border border-x border-solid rounded' type="email" id="email" {...register("email")} />
+                                    <input className='block w-[95%] py-1.5 px-3 text-sm leading-snug border border-x border-solid rounded' type="email" id="email" {...register("email")} />
 
                                 </div>
                                 <div className={`${addAddress ? 'block' : 'hidden'}`} >
                                     <label className='font-bold flex mb-3' htmlFor="address">Address</label>
-                                    <textarea className='block w-auto py-1.5 px-3 text-sm leading-snug border border-x border-solid rounded resize-none' type="text" id="address" {...register("address")} />
+                                    <textarea className='block w-[95%] py-1.5 px-3 text-sm leading-snug border border-x border-solid rounded resize-none' type="text" id="address" {...register("address")} />
 
                                 </div>
                                 <div className={`${addWebsite ? 'block' : 'hidden'}`} >
                                     <label className='font-bold flex mb-3' htmlFor="websitelink">Website</label>
-                                    <input className='block w-[80%] py-1.5 px-3 text-sm leading-snug border border-x border-solid rounded' type="text" id="websitelink" {...register("websitelink")} />
+                                    <input className='block w-[95%] py-1.5 px-3 text-sm leading-snug border border-x border-solid rounded' type="text" id="websitelink" {...register("websitelink")} />
 
                                 </div>
                                 <div className={`${addLink ? 'block' : 'hidden'}`} >
                                     <label className='font-bold flex mb-3' htmlFor="link">Link</label>
-                                    <input className='block w-[80%] py-1.5 px-3 text-sm leading-snug border border-x border-solid rounded' type="text" id="link" {...register("link")} />
+                                    <input className='block w-[95%] py-1.5 px-3 text-sm leading-snug border border-x border-solid rounded' type="text" id="link" {...register("link")} />
 
                                 </div>
                                 <div className={`${addGithub ? 'block' : 'hidden'}`} >
                                     <label className='font-bold flex mb-3' htmlFor="github">Github</label>
-                                    <input className='block w-[80%] py-1.5 px-3 text-sm leading-snug border border-x border-solid rounded' type="text" id="github" {...register("github")} />
+                                    <input className='block w-[95%] py-1.5 px-3 text-sm leading-snug border border-x border-solid rounded' type="text" id="github" {...register("github")} />
 
                                 </div>
                                 <div className={`${addTwitter ? 'block' : 'hidden'}`} >
                                     <label className='font-bold flex mb-3' htmlFor="twitter">Twitter</label>
-                                    <input className='block w-[80%] py-1.5 px-3 text-sm leading-snug border border-x border-solid rounded' type="text" id="twitter" {...register("twitter")} />
+                                    <input className='block w-[95%] py-1.5 px-3 text-sm leading-snug border border-x border-solid rounded' type="text" id="twitter" {...register("twitter")} />
 
                                 </div>
                                 <div className={`${addInstagram ? 'block' : 'hidden'}`} >
                                     <label className='font-bold flex mb-3' htmlFor="instagram">Instagram</label>
-                                    <input className='block w-[80%] py-1.5 px-3 text-sm leading-snug border border-x border-solid rounded' type="text" id="instagram" {...register("instagram")} />
+                                    <input className='block w-[95%] py-1.5 px-3 text-sm leading-snug border border-x border-solid rounded' type="text" id="instagram" {...register("instagram")} />
 
                                 </div>
                                 <div className={`${addLinkedIn ? 'block' : 'hidden'}`} >
                                     <label className='font-bold flex mb-3' htmlFor="linkedlink">LinkedIn</label>
-                                    <input className='block w-[80%] py-1.5 px-3 text-sm leading-snug border border-x border-solid rounded' type="text" id="linkedlink" {...register("linkedin")} />
+                                    <input className='block w-[95%] py-1.5 px-3 text-sm leading-snug border border-x border-solid rounded' type="text" id="linkedlink" {...register("linkedin")} />
 
                                 </div>
                                 <div className={`${addFacebook ? 'block' : 'hidden'}`} >
                                     <label className='font-bold flex mb-3' htmlFor="facebook">Facebook</label>
-                                    <input className='block w-[80%] py-1.5 px-3 text-sm leading-snug border border-x border-solid rounded' type="text" id="facebook" {...register("facebook")} />
+                                    <input className='block w-[95%] py-1.5 px-3 text-sm leading-snug border border-x border-solid rounded' type="text" id="facebook" {...register("facebook")} />
 
                                 </div>
                                 <div className={`${addYoutube ? 'block' : 'hidden'}`} >
                                     <label className='font-bold flex mb-3' htmlFor="youtube">Youtube</label>
-                                    <input className='block w-[80%] py-1.5 px-3 text-sm leading-snug border border-x border-solid rounded' type="text" id="youtube" {...register("youtube")} />
+                                    <input className='block w-[95%] py-1.5 px-3 text-sm leading-snug border border-x border-solid rounded' type="text" id="youtube" {...register("youtube")} />
 
                                 </div>
                                 <div className={`${addWhatsapp ? 'block' : 'hidden'}`} >
-                                    <label className='font-bold flex mb-3' htmlFor="whatsapp">Whatsapp</label>
-                                    <input className='block w-[80%] py-1.5 px-3 text-sm leading-snug border border-x border-solid rounded' type="text" id="whatsapp" {...register("whatsapp")} />
+                                    <label className='font-bold flex mb-3' htmlFor="whatsapp">Whatsapp<span className='font-normal ml-1'> (with country code)</span></label>
+                                    <input className='block w-[95%] py-1.5 px-3 text-sm leading-snug border border-x border-solid rounded' type="text" id="whatsapp" {...register("whatsapp")} />
 
                                 </div>
 
@@ -315,7 +311,7 @@ const New = () => {
 
                 {/* Selectors Part-3 START */}
 
-                <div className='lg:w-1/4 lg:pt-0 lg:px-0 pt-10 px-10'>
+                <div className='lg:w-1/4 lg:mr-8 lg:pt-0 lg:px-0 pt-10 px-10'>
                     <Card withBorder radius="md" className={classes.card}>
                         <Group position="apart">
                             <Text className={classes.title}>Add/remove fields</Text>
@@ -324,6 +320,10 @@ const New = () => {
                             {items}
                         </SimpleGrid>
                     </Card>
+                </div>
+                <div>
+                    <span className='font-bold'>Preview:</span>
+                    <BadgeCard image={watchimgUrl} name={watchname} title={watchtitle} logo={watchlogoUrl} company={watchcompany} color={null} phone={watchphone} email={watchemail} address={watchaddress} websitelink={watchwebsitelink} link={watchlink} github={watchgithub} twitter={watchtwitter} instagram={watchinstagram} linkedin={watchlinkedin} facebook={watchfacebook} youtube={watchyoutube} whatsapp={watchwhatsapp} />
                 </div>
             </div >
         </div>

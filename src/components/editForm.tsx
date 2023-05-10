@@ -323,7 +323,7 @@ const EditForm = ({ cardId, image, name, title, company, logo, phone, email, add
                                 </div>
                                 <div className={`${addAddress ? 'block' : 'hidden'}`} >
                                     <label className='font-bold flex mb-3' htmlFor="address">Address</label>
-                                    <textarea className='block w-auto py-1.5 px-3 text-sm leading-snug border border-x border-solid rounded resize-none' type="text" id="address" {...register("address")} />
+                                    <textarea className='block w-[95%] h-20 py-1.5 px-3 text-sm leading-snug border border-x border-solid rounded resize-none' type="text" id="address" {...register("address")} />
 
                                 </div>
                                 <div className={`${addWebsite ? 'block' : 'hidden'}`} >
@@ -367,7 +367,7 @@ const EditForm = ({ cardId, image, name, title, company, logo, phone, email, add
 
                                 </div>
                                 <div className={`${addWhatsapp ? 'block' : 'hidden'}`} >
-                                    <label className='font-bold flex mb-3' htmlFor="whatsapp">Whatsapp</label>
+                                    <label className='font-bold flex mb-3' htmlFor="whatsapp">Whatsapp<span className='font-normal ml-1'> (with country code)</span></label>
                                     <input className='block w-[95%] py-1.5 px-3 text-sm leading-snug border border-x border-solid rounded' type="text" id="whatsapp" {...register("whatsapp")} />
 
                                 </div>
