@@ -352,7 +352,7 @@ const New = () => {
                         </SimpleGrid>
                     </Card>
                 </div>
-                <div>
+                <div className='w-1/3'>
                     <span className='font-bold'>Preview:</span>
                     <BadgeCard image={watchimgUrl} name={watchname} title={watchtitle} logo={watchlogoUrl} company={watchcompany} color={null} phone={watchphone} email={watchemail} address={watchaddress} websitelink={watchwebsitelink} link={watchlink} github={watchgithub} twitter={watchtwitter} instagram={watchinstagram} linkedin={watchlinkedin} facebook={watchfacebook} youtube={watchyoutube} whatsapp={watchwhatsapp} />
                 </div>

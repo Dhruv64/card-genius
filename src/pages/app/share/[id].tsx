@@ -116,10 +116,10 @@ const CardSharePage: NextPage<{ id: string }> = ({ id }) => {
                                         <CardSection className={`text-center ${classes.section}`}>
                                             <span className="font-semibold ">Social share</span>
                                             <CardSection className="mt-5 space-x-2">
-                                                <WhatsappShareButton url={url} title="Visit my Card Genius card">
+                                                <WhatsappShareButton url={url} title={`Click here to visit ${data.name}'s digital card`}>
                                                     <WhatsappIcon round={true} size={40} />
                                                 </WhatsappShareButton>
-                                                <a href={`https://www.linkedin.com/sharing/share-offsite/?url=${url}`}>
+                                                <a href={`https://www.linkedin.com/sharing/share-offsite/?url=${url}`} target="_blank">
                                                     <LinkedinIcon round={true} size={40} />
                                                 </a>
                                                 <TwitterShareButton url={url}>
