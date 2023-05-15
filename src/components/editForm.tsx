@@ -1,4 +1,5 @@
 import React from 'react';
+import { IoArrowBack } from "react-icons/io5";
 import { useForm } from 'react-hook-form';
 import { useState } from 'react';
 import { api } from '~/utils/api';
@@ -7,9 +8,6 @@ import { createStyles, Card, Text, SimpleGrid, UnstyledButton, Input, Group, rem
 import { CgWebsite } from "react-icons/cg";
 import { BrandInstagram, BrandLinkedin, BrandTwitter, BrandWhatsapp, BrandYoutube, BrandFacebook, BrandGithub, Mail, Link, MapPin, Phone, FileDescription, BrandSnapchat, BrandTiktok, BrandPaypal, BrandCashapp, CalendarEvent, BrandDiscord, BrandTwitch, BrandTelegram, BrandSkype, BrandWechat, DeviceNintendo, AlertCircle } from 'tabler-icons-react';
 import { useRouter } from 'next/router';
-import Createnav from '~/components/createnav';
-import BadgeCard from '~/components/previewCard';
-import Head from 'next/head';
 // Selectors Part-1 Start
 
 
@@ -50,7 +48,6 @@ type FormValues = {
     logoUrl: string
     name: string
     title: string
-    department: string
     company: string
     phone: string
     email: string
@@ -66,66 +63,147 @@ type FormValues = {
     whatsapp: string
 }
 
+interface EditFormProps {
+    cardId: string;
+    image: string | null;
+    name: string | null;
+    title: string | null;
+    logo: string | null;
+    company: string | null;
+    phone: string | null;
+    email: string | null;
+    address: string | null;
+    websitelink: string | null;
+    link: string | null;
+    github: string | null;
+    twitter: string | null;
+    instagram: string | null;
+    linkedin: string | null;
+    facebook: string | null;
+    youtube: string | null;
+    whatsapp: string | null;
+}
 
-const New = () => {
+const EditForm = ({ cardId, image, name, title, company, logo, phone, email, address, websitelink, link, github, twitter, instagram, linkedin, facebook, youtube, whatsapp }: EditFormProps) => {
     const router = useRouter()
-    const { mutate, isLoading: isCreating, data } = api.cards.createCard.useMutation({
+    const preloadedValues = {
+        imgUrl: image,
+        logoUrl: logo,
+        name: name,
+        title: title,
+        company: company,
+        phone: phone,
+        email: email,
+        address: address,
+        websitelink: websitelink,
+        link: link,
+        github: github,
+        twitter: twitter,
+        instagram: instagram,
+        linkedin: linkedin,
+        facebook: facebook,
+        youtube: youtube,
+        whatsapp: whatsapp,
+    }
+    const { mutate:makeEdit, isLoading } = api.cards.EditCardById.useMutation({
         onSuccess: () => {
-            message.success('Card Created!')
-            router.push(`/app/`)
-            console.log(data)
+            message.success('Changes Saved!')
+            router.reload()
         },
         onError: (e) => {
             const errorMessage = e.data?.zodError?.fieldErrors.content;
             if (errorMessage && errorMessage[0]) {
                 message.error(errorMessage[0]);
             } else {
-                message.error("Failed to create! Please try again later.");
+                message.error("Failed to save changes. Please try again later.");
             }
         }
 
     });
-    const form = useForm<FormValues>()
-    const { register, watch, handleSubmit, formState } = form;
+    const form = useForm<FormValues>({
+        defaultValues: preloadedValues
+    })
+    const { register, control, handleSubmit, formState } = form;
 
-    const watchimgUrl = watch("imgUrl")
-    const watchlogoUrl = watch("logoUrl")
-    const watchname = watch("name")
-    const watchtitle = watch("title")
-    const watchcompany = watch("company")
-    const watchphone = watch("phone")
-    const watchemail = watch("email")
-    const watchaddress = watch("address")
-    const watchwebsitelink = watch("websitelink")
-    const watchlink = watch("link")
-    const watchgithub = watch("github")
-    const watchtwitter = watch("twitter")
-    const watchinstagram = watch("instagram")
-    const watchlinkedin = watch("linkedin")
-    const watchfacebook = watch("facebook")
-    const watchyoutube = watch("youtube")
-    const watchwhatsapp = watch("whatsapp")
 
     const { errors } = formState;
 
 
     const onSubmit = (data: FormValues) => {
-        mutate(data)
+        let cardObject={
+            cardId: cardId
+        }
+        
+        let submitData ={
+            ...cardObject,...data
+        }
+
+        makeEdit(submitData)
     }
 
-    const [addPhone, setAddPhone] = useState(false)
-    const [addEmail, setAddEmail] = useState(false)
-    const [addAddress, setAddAddress] = useState(false)
-    const [addWebsite, setAddWebsite] = useState(false)
-    const [addLink, setAddLink] = useState(false)
-    const [addGithub, setAddGithub] = useState(false)
-    const [addTwitter, setAddTwitter] = useState(false)
-    const [addInstagram, setAddInstagram] = useState(false)
-    const [addLinkedIn, setAddLinkedIn] = useState(false)
-    const [addFacebook, setAddFacebook] = useState(false)
-    const [addYoutube, setAddYoutube] = useState(false)
-    const [addWhatsapp, setAddWhatsapp] = useState(false)
 
+
+    const [addPhone, setAddPhone] = useState(() => {
+        if (phone == null || phone == '') {
+            return false
+        } else return true
+    })
+    const [addEmail, setAddEmail] = useState(() => {
+        if (email == null || email == '') {
+            return false
+        } else return true
+    })
+    const [addAddress, setAddAddress] = useState(() => {
+        if (address == null || address == '') {
+            return false
+        } else return true
+    })
+    const [addWebsite, setAddWebsite] = useState(() => {
+        if (websitelink == null || websitelink == '') {
+            return false
+        } else return true
+    })
+    const [addLink, setAddLink] = useState(() => {
+        if (link == null || link == '') {
+            return false
+        } else return true
+    })
+    const [addGithub, setAddGithub] = useState(() => {
+        if (github == null || github == '') {
+            return false
+        } else return true
+    })
+    const [addTwitter, setAddTwitter] = useState(() => {
+        if (twitter == null || twitter == '') {
+            return false
+        } else return true
+    })
+    const [addInstagram, setAddInstagram] = useState(() => {
+        if (instagram == null || instagram == '') {
+            return false
+        } else return true
+    })
+    const [addLinkedIn, setAddLinkedIn] = useState(() => {
+        if (linkedin == null || linkedin == '') {
+            return false
+        } else return true
+    })
+    const [addFacebook, setAddFacebook] = useState(() => {
+        if (facebook == null || facebook == '') {
+            return false
+        } else return true
+    })
+    const [addYoutube, setAddYoutube] = useState(() => {
+        if (youtube == null || youtube == '') {
+            return false
+        } else return true
+    })
+    const [addWhatsapp, setAddWhatsapp] = useState(() => {
+        if (whatsapp == null || whatsapp == '') {
+            return false
+        } else return true
+    })
+   
     const mockdata = [
         { title: 'Phone', icon: Phone, color: 'violet' },
         { title: 'Email', icon: Mail, color: 'orange' },
@@ -172,6 +250,7 @@ const New = () => {
     }
 
 
+
     // Selectors Part-2 START
     const { classes, theme } = useStyles();
 
@@ -183,17 +262,15 @@ const New = () => {
             </Text>
         </UnstyledButton>
     ));
+
+   
     // Selectors Part-2 END
 
     return (
 
         <div >
-            <Head>
-                <title>Create Card</title>
-            </Head>
-            <Createnav />
-            <div className='lg:flex lg:justify-center lg:mt-10 mt-5'>
-                <div className='text-center lg:w-1/3' >
+            <div className='lg:flex lg:justify-center'>
+                <div className='text-center lg:w-[50%]' >
                     <div className='border border-solid p-5 rounded mx-10'>
                         <form onSubmit={handleSubmit(onSubmit)} noValidate>
                             <div className='space-y-2' >
@@ -330,8 +407,9 @@ const New = () => {
 
 
                             <div className='py-3'>
-                                <Button htmlType='submit' type='primary' loading={isCreating} className="text-white font-bold x-4 rounded">
-                                    Save
+                                {/* loading */}
+                                <Button htmlType='submit' type='primary' loading={isLoading} className="text-white font-bold x-4 rounded">
+                                    Save Changes
                                 </Button>
                             </div>
                         </form>
@@ -342,7 +420,7 @@ const New = () => {
 
                 {/* Selectors Part-3 START */}
 
-                <div className='lg:w-1/4 lg:mr-8 lg:pt-0 lg:px-0 pt-10 px-10'>
+                <div className='lg:w-[40%] lg:pt-0 lg:px-0 pt-10 px-10'>
                     <Card withBorder radius="md" className={classes.card}>
                         <Group position="apart">
                             <Text className={classes.title}>Add/remove fields</Text>
@@ -352,13 +430,9 @@ const New = () => {
                         </SimpleGrid>
                     </Card>
                 </div>
-                <div className='w-1/3'>
-                    <span className='font-bold'>Preview:</span>
-                    <BadgeCard image={watchimgUrl} name={watchname} title={watchtitle} logo={watchlogoUrl} company={watchcompany} color={null} phone={watchphone} email={watchemail} address={watchaddress} websitelink={watchwebsitelink} link={watchlink} github={watchgithub} twitter={watchtwitter} instagram={watchinstagram} linkedin={watchlinkedin} facebook={watchfacebook} youtube={watchyoutube} whatsapp={watchwhatsapp} />
-                </div>
             </div >
         </div>
     )
 }
 
-export default New
+export default EditForm

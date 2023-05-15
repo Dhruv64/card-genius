@@ -13,7 +13,7 @@ import Link from 'next/link';
 
 const index = () => {
   const { data } = api.cards.getCardsByUserId.useQuery()
-  console.log(data)
+  // console.log(data)
   const { data: session } = useSession();
 
   if (!session) {
@@ -26,7 +26,7 @@ const index = () => {
       transition: 'transform 150ms ease, box-shadow 150ms ease',
       boxShadow: theme.shadows.md,
       height: 230,
-      width: 200,
+      width: 220,
       '&:hover': {
         transform: 'scale(1.04)',
         boxShadow: theme.shadows.md,
@@ -36,8 +36,8 @@ const index = () => {
     createCard: {
       transition: 'transform 150ms ease, box-shadow 150ms ease',
       boxShadow: theme.shadows.md,
-      height: 220,
-      width: 200,
+      height: 230,
+      width: 220,
       '&:hover': {
         transform: 'scale(1.04)',
         boxShadow: theme.shadows.md,
@@ -75,7 +75,7 @@ const index = () => {
 
   return (
 
-    <div className='bg-blue-200'>
+    <div className='bg-blue-200 h-[100vh]'>
       <Head>
         <title>
           Your Cards

@@ -8,6 +8,7 @@ import { Bars3Icon, UserIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import { Pencil, Trash, ArrowBack } from 'tabler-icons-react';
 import { api } from '~/utils/api';
 import { useRouter } from 'next/router';
+import EditForm from './editForm';
 
 
 function classNames(...classes: string[]) {
@@ -15,15 +16,33 @@ function classNames(...classes: string[]) {
 }
 
 interface SharenavProps {
-    cardId: string ;
+    cardId: string;
+    image: string | null;
+    name: string | null;
+    title: string | null;
+    logo: string | null;
+    company: string | null;
+    phone: string | null;
+    email: string | null;
+    address: string | null;
+    websitelink: string | null;
+    link: string | null;
+    github: string | null;
+    twitter: string | null;
+    instagram: string | null;
+    linkedin: string | null;
+    facebook: string | null;
+    youtube: string | null;
+    whatsapp: string | null;
 }
 
 
-const Sharenav = ({cardId}: SharenavProps) => {
+const Sharenav = ({ cardId, image, name, title, company, logo, phone, email, address, websitelink, link, github, twitter, instagram, linkedin, facebook, youtube, whatsapp }: SharenavProps) => {
     const router = useRouter()
-    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+    const [isEditModalOpen, setIsEditModalOpen] = useState(false);
     const { data: session } = useSession();
-    const { mutate, isLoading: isDeleting } = api.cards.deleteCardById.useMutation({
+    const { mutate: deleteCard, isLoading: isDeleting } = api.cards.deleteCardById.useMutation({
         onSuccess: () => {
             message.info('Card Deleted')
             router.push(`/app/`)
@@ -39,10 +58,9 @@ const Sharenav = ({cardId}: SharenavProps) => {
 
     });
     const handleDelete = () => {
-        // console.log('delete worked '+cardId)
-        mutate({Id: cardId})
-
+        deleteCard({ Id: cardId })
     }
+
     return (
         <Disclosure as="nav" className="bg-blue-950">
             {({ open }) => (
@@ -86,7 +104,9 @@ const Sharenav = ({cardId}: SharenavProps) => {
                                                         <span > Your Cards</span></div>
                                                 </Link>
                                                 <a
-                                                    href='/app/edit'
+                                                    onClick={() => {
+                                                        setIsEditModalOpen(true);
+                                                    }}
                                                     className={classNames(
                                                         false ? 'bg-gray text-white' : 'text-cyan-400 no-underline hover:bg-blue-500 hover:text-white',
                                                         'rounded-md px-3 py-3 text-base font-medium'
@@ -98,7 +118,7 @@ const Sharenav = ({cardId}: SharenavProps) => {
                                                 </a>
                                                 <a
                                                     onClick={() => {
-                                                        setIsModalOpen(true);
+                                                        setIsDeleteModalOpen(true);
                                                     }}
                                                     className={classNames(
                                                         false ? 'bg-gray text-white' : 'text-cyan-400 no-underline hover:bg-blue-500 hover:text-white',
@@ -109,9 +129,9 @@ const Sharenav = ({cardId}: SharenavProps) => {
                                                     <div className='flex space-x-2 cursor-pointer'><Trash />
                                                         <span > Delete</span></div>
                                                 </a>
-                                                <Modal title="Are you sure you want to delete this card?" open={isModalOpen} onOk={handleDelete} onCancel={() => { setIsModalOpen(false) }}
+                                                <Modal title="Are you sure you want to delete this card?" open={isDeleteModalOpen} onOk={handleDelete} onCancel={() => { setIsDeleteModalOpen(false) }}
                                                     footer={[
-                                                        <Button onClick={() => { setIsModalOpen(false) }}>
+                                                        <Button onClick={() => { setIsDeleteModalOpen(false) }}>
                                                             Cancel
                                                         </Button>,
                                                         //loading 
@@ -121,9 +141,19 @@ const Sharenav = ({cardId}: SharenavProps) => {
                                                     ]}>
                                                     <p>This action cannot be reversed</p>
                                                 </Modal>
+                                                <Modal title="Edit Card" width={1000} open={isEditModalOpen} onCancel={() => { setIsEditModalOpen(false) }}
+                                                    footer={[
+                                                        <Button onClick={() => { setIsEditModalOpen(false) }}>
+                                                            Cancel
+                                                        </Button>,
+                                                        //loading 
+
+                                                    ]}>
+                                                    <>
+                                                        <EditForm cardId={cardId} image={image} name={name} title={title} logo={logo} company={company} phone={phone} email={email} address={address} websitelink={websitelink} link={link} github={github} twitter={twitter} instagram={instagram} linkedin={linkedin} facebook={facebook} youtube={youtube} whatsapp={whatsapp} />
+                                                    </>
+                                                </Modal>
                                             </div>
-
-
                                         )
                                     })()}
 
@@ -181,9 +211,23 @@ const Sharenav = ({cardId}: SharenavProps) => {
                     <Disclosure.Panel className="sm:hidden">
                         <div className="space-y-1 px-2 pb-3 pt-2">
                             <Disclosure.Button
+                                as="a"
+                                href='/app/'
+                                className={classNames(
+                                    'text-gray-300 hover:bg-gray-700 hover:text-white no-underline',
+                                    'block rounded-md px-3 py-2 text-base font-medium'
+                                )}
+                                aria-current={false ? 'page' : undefined}
+                            >
+                                <div className='flex space-x-2 cursor-pointer'><ArrowBack />
+                                    <span > Your Cards</span></div>
+                            </Disclosure.Button>
+                            <Disclosure.Button
 
                                 as="a"
-                                href='/app/edit'
+                                onClick={() => {
+                                    setIsEditModalOpen(true);
+                                }}
                                 className={classNames(
                                     'text-gray-300 hover:bg-gray-700 hover:text-white no-underline',
                                     'block rounded-md px-3 py-2 text-base font-medium'
@@ -196,7 +240,7 @@ const Sharenav = ({cardId}: SharenavProps) => {
                             <Disclosure.Button
 
                                 as="a"
-                                onClick={()=> setIsModalOpen(true)}
+                                onClick={() => setIsDeleteModalOpen(true)}
                                 className={classNames(
                                     'text-gray-300 hover:bg-gray-700 hover:text-white no-underline cursor-pointer',
                                     'block rounded-md px-3 py-2 text-base font-medium'

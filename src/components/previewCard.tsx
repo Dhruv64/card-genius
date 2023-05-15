@@ -81,11 +81,15 @@ export default function BadgeCard({ image, name, title, company, logo, phone, em
 
     return (
         <>
-            <div className='w-full md:w-2/3 lg:w-1/3'>
+            <div className='w-full'>
                 <Card withBorder radius="md" p="md" className={classes.card}>
                     {(() => {
-                        if (image == null) {
-                            return null
+                        if (image == null || image=='') {
+                            return (
+                                <Card.Section>
+                                    <Image src="/placeholder_image.png" height={300} alt='' />
+                                </Card.Section>
+                            )
                         } else return (
                             <Card.Section>
                                 <Image src={image} height={300} alt='' />
@@ -107,8 +111,10 @@ export default function BadgeCard({ image, name, title, company, logo, phone, em
                                 {title}
                             </Text>
                             {(() => {
-                                if (logo == null) {
-                                    return null
+                                if (logo == null || logo == '') {
+                                    return (
+                                        <Image src="/placeholder_logo.png" height={50} width={50} alt='' />
+                                    )
                                 } else return <Image src={logo} height={50} width={50} alt='' />
                             })()}
 
@@ -267,19 +273,19 @@ export default function BadgeCard({ image, name, title, company, logo, phone, em
                                             } else return (
                                                 <a href={`//www.linkedin.com/in/${linkedin}/`} target="_blank" className='no-underline'>
 
-                                                <div className={cx(classes.wrapper)}>
+                                                    <div className={cx(classes.wrapper)}>
 
-                                                    <ThemeIcon size={40} radius="md" className={classes.icon}>
-                                                        <FontAwesomeIcon icon={"fa-brands fa-linkedin-in"} />
-                                                    </ThemeIcon>
+                                                        <ThemeIcon size={40} radius="md" className={classes.icon}>
+                                                            <FontAwesomeIcon icon={"fa-brands fa-linkedin-in"} />
+                                                        </ThemeIcon>
 
-                                                    <div>
-                                                        <Text size="xs" className={classes.type} >
-                                                            LinkedIn
-                                                        </Text>
-                                                        <Text className={classes.entry}>{linkedin}</Text>
+                                                        <div>
+                                                            <Text size="xs" className={classes.type} >
+                                                                LinkedIn
+                                                            </Text>
+                                                            <Text className={classes.entry}>{linkedin}</Text>
+                                                        </div>
                                                     </div>
-                                                </div>
                                                 </a>
                                             )
                                         })()}
