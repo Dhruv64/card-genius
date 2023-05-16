@@ -9,7 +9,7 @@ import {
     SimpleGrid, Box, Stack, ThemeIcon
 } from '@mantine/core';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { At, BrandFacebook, BrandGithub, BrandInstagram, BrandLinkedin, BrandTwitter, BrandWhatsapp, BrandYoutube, Link, MapPin, Phone } from 'tabler-icons-react';
 
 
 const useStyles = createStyles((theme) => ({
@@ -139,7 +139,7 @@ export default function BadgeCard({ image, name, title, company, logo, phone, em
                                             } else return (
                                                 <div className='flex'>
                                                     <ThemeIcon size={40} radius="md" className={classes.icon}>
-                                                        <FontAwesomeIcon icon={"fa-solid fa-phone"} />
+                                                        <Phone />
                                                     </ThemeIcon>
 
                                                     <div>
@@ -161,7 +161,7 @@ export default function BadgeCard({ image, name, title, company, logo, phone, em
                                                     <div className={cx(classes.wrapper)}>
 
                                                         <ThemeIcon size={40} radius="md" className={classes.icon}>
-                                                            <FontAwesomeIcon icon={"fa-solid fa-at"} />
+                                                            <At />
                                                         </ThemeIcon>
 
                                                         <div>
@@ -182,7 +182,7 @@ export default function BadgeCard({ image, name, title, company, logo, phone, em
                                                 <div className={cx(classes.wrapper)}>
 
                                                     <ThemeIcon size={40} radius="md" className={classes.icon}>
-                                                        <FontAwesomeIcon icon={"fa-solid fa-map-pin"} />
+                                                        <MapPin />
                                                     </ThemeIcon>
 
                                                     <div>
@@ -202,7 +202,7 @@ export default function BadgeCard({ image, name, title, company, logo, phone, em
                                                 <a href={`//${websitelink}`} target="_blank" className='no-underline' >
                                                     <div className={cx(classes.wrapper)}>
                                                         <ThemeIcon size={40} radius="md" className={classes.icon}>
-                                                            <FontAwesomeIcon icon={"fa-solid fa-link"} />
+                                                            <Link />
                                                         </ThemeIcon>
 
                                                         <div>
@@ -224,8 +224,8 @@ export default function BadgeCard({ image, name, title, company, logo, phone, em
 
                                                     <div className={cx(classes.wrapper)}>
 
-                                                        <ThemeIcon size={40} radius="md" target="_blank" className={classes.icon}>
-                                                            <FontAwesomeIcon icon={"fa-solid fa-link"} />
+                                                        <ThemeIcon size={40} radius="md" className={classes.icon}>
+                                                            <Link />
                                                         </ThemeIcon>
 
                                                         <div>
@@ -247,7 +247,7 @@ export default function BadgeCard({ image, name, title, company, logo, phone, em
                                                     <div className={cx(classes.wrapper)}>
 
                                                         <ThemeIcon size={40} radius="md" className={classes.icon}>
-                                                            <FontAwesomeIcon icon={"fa-brands fa-whatsapp"} />
+                                                            <BrandWhatsapp />
                                                         </ThemeIcon>
 
                                                         <div>
@@ -267,19 +267,19 @@ export default function BadgeCard({ image, name, title, company, logo, phone, em
                                             } else return (
                                                 <a href={`//www.linkedin.com/in/${linkedin}/`} target="_blank" className='no-underline'>
 
-                                                <div className={cx(classes.wrapper)}>
+                                                    <div className={cx(classes.wrapper)}>
 
-                                                    <ThemeIcon size={40} radius="md" className={classes.icon}>
-                                                        <FontAwesomeIcon icon={"fa-brands fa-linkedin-in"} />
-                                                    </ThemeIcon>
+                                                        <ThemeIcon size={40} radius="md" className={classes.icon}>
+                                                            <BrandLinkedin />
+                                                        </ThemeIcon>
 
-                                                    <div>
-                                                        <Text size="xs" className={classes.type} >
-                                                            LinkedIn
-                                                        </Text>
-                                                        <Text className={classes.entry}>{linkedin}</Text>
+                                                        <div>
+                                                            <Text size="xs" className={classes.type} >
+                                                                LinkedIn
+                                                            </Text>
+                                                            <Text className={classes.entry}>{linkedin}</Text>
+                                                        </div>
                                                     </div>
-                                                </div>
                                                 </a>
                                             )
                                         })()}
@@ -293,7 +293,7 @@ export default function BadgeCard({ image, name, title, company, logo, phone, em
                                                     <div className={cx(classes.wrapper)}>
 
                                                         <ThemeIcon size={40} radius="md" className={classes.icon}>
-                                                            <FontAwesomeIcon icon={"fa-brands fa-twitter"} />
+                                                            <BrandTwitter />
                                                         </ThemeIcon>
 
                                                         <div>
@@ -315,7 +315,7 @@ export default function BadgeCard({ image, name, title, company, logo, phone, em
                                                     <div className={cx(classes.wrapper)}>
 
                                                         <ThemeIcon size={40} radius="md" className={classes.icon}>
-                                                            <FontAwesomeIcon icon={"fa-brands fa-instagram"} />
+                                                            <BrandInstagram />
                                                         </ThemeIcon>
 
                                                         <div>
@@ -337,7 +337,7 @@ export default function BadgeCard({ image, name, title, company, logo, phone, em
                                                     <div className={cx(classes.wrapper)}>
 
                                                         <ThemeIcon size={40} radius="md" className={classes.icon}>
-                                                            <FontAwesomeIcon icon={"fa-brands fa-facebook"} />
+                                                            <BrandFacebook />
                                                         </ThemeIcon>
 
                                                         <div>
@@ -361,7 +361,7 @@ export default function BadgeCard({ image, name, title, company, logo, phone, em
                                                     <div className={cx(classes.wrapper)}>
 
                                                         <ThemeIcon size={40} radius="md" className={classes.icon}>
-                                                            <FontAwesomeIcon icon={"fa-brands fa-youtube"} />
+                                                            <BrandYoutube />
                                                         </ThemeIcon>
 
                                                         <div>
@@ -384,7 +384,7 @@ export default function BadgeCard({ image, name, title, company, logo, phone, em
                                                     <div className={cx(classes.wrapper)}>
 
                                                         <ThemeIcon size={40} radius="md" className={classes.icon}>
-                                                            <FontAwesomeIcon icon={"fa-brands fa-github"} />
+                                                            <BrandGithub />
                                                         </ThemeIcon>
 
                                                         <div>
