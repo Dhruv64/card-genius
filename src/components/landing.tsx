@@ -8,7 +8,7 @@ import Detail1 from "./landingpage/detail1";
 import Detail2 from "./landingpage/detail2";
 import Detail4 from "./landingpage/detail4";
 import Detail3 from "./landingpage/detail3";
-import Carousel from "./landingpage/3dcarousel";
+import Carousel from "./landingpage/carousel";
 <style>@import url(`https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500&display=swap`);</style>
 
 
@@ -21,7 +21,6 @@ const LandingPage: NextPage = () => {
       <Detail1/>
       <Detail2/>
       <Detail3/>
-      <Carousel/>
       <Detail4/>      
       <Footer />
     </div>

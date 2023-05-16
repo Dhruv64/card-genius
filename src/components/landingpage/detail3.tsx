@@ -12,7 +12,7 @@ const Detail3 = () => {
                         
                     </div>
                     <div className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6">
-                        <img className="object-cover object-center h-96 w-96 rounded" alt="hero" src="./mock.png" />
+                        <img className="object-cover object-center h-80 w-80 lg:h-96 lg:w-96 rounded" alt="hero" src="./mock.png" />
                     </div>
                 </div>
             </section>
