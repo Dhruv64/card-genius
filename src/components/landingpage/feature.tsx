@@ -3,7 +3,7 @@ import { BsShareFill, BsFillPencilFill } from 'react-icons/bs';
 import { MdManageHistory, MdNature, MdUpdate, MdOutlineEdit } from 'react-icons/md';
 const Feature: NextPage = () => {
   return (
-    <div className="bg-blue-950">
+    <div  id="Features" className="bg-blue-950">
       <section className="text-gray-600 body-font">
         <div className="container px-5 py-12 mx-auto">
           <div className="text-center mb-20">
