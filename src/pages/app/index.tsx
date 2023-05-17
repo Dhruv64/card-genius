@@ -4,8 +4,7 @@ import Topnav from '~/components/topnav';
 import Head from 'next/head';
 import { api } from "~/utils/api";
 import NotFound404 from "~/components/404";
-import { createStyles, SimpleGrid, Card, Image, Text, Container, Menu, ActionIcon, Group } from '@mantine/core';
-import { DotsVertical, Pencil, Trash } from "tabler-icons-react"
+import { createStyles, SimpleGrid, Card, Image, Text, Container, Group } from '@mantine/core';
 import Link from 'next/link';
 
 
@@ -13,7 +12,6 @@ import Link from 'next/link';
 
 const index = () => {
   const { data } = api.cards.getCardsByUserId.useQuery()
-  // console.log(data)
   const { data: session } = useSession();
 
   if (!session) {
