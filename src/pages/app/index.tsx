@@ -75,7 +75,7 @@ const index = () => {
 
   return (
 
-    <div className='bg-blue-200 h-[100vh]'>
+    <div className='bg-blue-200 h-auto'>
       <Head>
         <title>
           Your Cards
