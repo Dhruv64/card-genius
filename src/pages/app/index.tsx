@@ -74,36 +74,38 @@ const index = () => {
   ));
 
   return (
-
-    <div className='bg-blue-200 h-auto'>
+    <div className='bg-blue-200 min-h-screen'>
       <Head>
         <title>
-          Your Cards
+          {session?.user.name} Cards
         </title>
       </Head>
 
-      <Topnav />
+      <div>
 
-      {(() => {
-        if (!session) {
-          return null
-        } else return (
-          <Container className='' py="xl">
-            <div className='ml-20 lg:ml-0'>
-              <SimpleGrid cols={4} breakpoints={[{ maxWidth: 'sm', cols: 1, }]}>
-                <Card p={'xs'} radius="md" component="a" href='/app/new' className={`border-dashed border text-center ${classes.createCard}`} >
-                  <span className='text-9xl font-thin'>+</span><br></br>
-                  <span className='font-light pt-10'>Create a card</span>
-                </Card>
-                {cards}
-              </SimpleGrid>
-            </div>
-          </Container>
+        <Topnav />
 
-        )
-      })()}
+        {(() => {
+          if (!session) {
+            return null
+          } else return (
+            <Container className='' py="xl">
+              <div className='ml-20 lg:ml-0'>
+                <SimpleGrid cols={4} breakpoints={[{ maxWidth: 'sm', cols: 1, }]}>
+                  <Card p={'xs'} radius="md" component="a" href='/app/new' className={`border-dashed border text-center ${classes.createCard}`} >
+                    <span className='text-9xl font-thin'>+</span><br></br>
+                    <span className='font-light pt-10'>Create a card</span>
+                  </Card>
+                  {cards}
+                </SimpleGrid>
+              </div>
+            </Container>
+
+          )
+        })()}
 
 
+      </div>
     </div>
   )
 }
