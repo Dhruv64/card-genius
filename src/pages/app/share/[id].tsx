@@ -25,6 +25,7 @@ import {
 } from "react-share";
 import { useSession } from "next-auth/react";
 import Sharenav from "~/components/sharenav";
+import Link from "next/link";
 
 const { Paragraph } = Typography;
 
@@ -92,7 +93,7 @@ const CardSharePage: NextPage<{ id: string }> = ({ id }) => {
                                     {data.name}'s card
                                 </title>
                             </Head>
-                            <Sharenav cardId={data.id} image={data.imgUrl} name={data.name} title={data.title} logo={data.logoUrl} company={data.company}  phone={data.phone} email={data.email} address={data.address} websitelink={data.websitelink} link={data.link} github={data.github} twitter={data.twitter} instagram={data.instagram} linkedin={data.linkedin} facebook={data.facebook} youtube={data.youtube} whatsapp={data.whatsapp}/>
+                            <Sharenav cardId={data.id} image={data.imgUrl} name={data.name} title={data.title} logo={data.logoUrl} company={data.company} phone={data.phone} email={data.email} address={data.address} websitelink={data.websitelink} link={data.link} github={data.github} twitter={data.twitter} instagram={data.instagram} linkedin={data.linkedin} facebook={data.facebook} youtube={data.youtube} whatsapp={data.whatsapp} />
                             <div className="md:py-4 lg:flex justify-evenly">
 
                                 <BadgeCard image={data.imgUrl} name={data.name} title={data.title} logo={data.logoUrl} company={data.company} color={""} phone={data.phone} email={data.email} address={data.address} websitelink={data.websitelink} link={data.link} github={data.github} twitter={data.twitter} instagram={data.instagram} linkedin={data.linkedin} facebook={data.facebook} youtube={data.youtube} whatsapp={data.whatsapp} />
@@ -100,10 +101,15 @@ const CardSharePage: NextPage<{ id: string }> = ({ id }) => {
 
                                 <div>
                                     <Card withBorder radius="md" padding="lg" className={classes.card}>
+                                        <div className="text-center mb-3">
+                                            <span className="font-semibold ">Scan or click to preview your card</span>
+                                        </div>
+                                        <CardSection className={`text-center ${classes.section}`}>
 
-                                        <CardSection className={classes.section}>
                                             <div id="myqrcode">
-                                                <QRCode size={300} value={url} style={{ marginBottom: 16 }} className="mx-auto" />
+                                                <Link href={`/preview/${data.id}`}>
+                                                    <QRCode size={300} value={url} style={{ marginBottom: 16 }} className="mx-auto" />
+                                                </Link>
                                                 <Tooltip title="Download QR">
                                                     <Button variant="light" color="blue" fullWidth mt="md" radius="md" onClick={downloadQRCode}>
                                                         <span>Download your Card's QR  &nbsp;&nbsp;</span>
@@ -123,7 +129,7 @@ const CardSharePage: NextPage<{ id: string }> = ({ id }) => {
                                                     <LinkedinIcon round={true} size={40} />
                                                 </a>
                                                 <TwitterShareButton url={url}>
-                                                    <TwitterIcon round={true} size={40}/>
+                                                    <TwitterIcon round={true} size={40} />
                                                 </TwitterShareButton>
                                                 <EmailShareButton url={url} title="Visit my Card Genius card">
                                                     <EmailIcon round={true} size={40} />
