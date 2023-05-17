@@ -193,8 +193,8 @@ const New = () => {
             </Head>
             <Createnav />
             <div className='lg:flex lg:justify-center lg:mt-10 mt-5'>
-                <div className='text-center lg:w-1/3' >
-                    <div className='border border-solid p-5 rounded mx-10'>
+                <div className='text-center lg:w-1/3 w-full' >
+                    <div className='border border-solid p-5 rounded lg:mx-10'>
                         <form onSubmit={handleSubmit(onSubmit)} noValidate>
                             <div className='space-y-2' >
                                 <div >
@@ -342,7 +342,7 @@ const New = () => {
 
                 {/* Selectors Part-3 START */}
 
-                <div className='lg:w-1/4 lg:mr-8 lg:pt-0 lg:px-0 pt-10 px-10'>
+                <div className='lg:w-1/4 lg:mr-8 lg:pt-0  pt-10 '>
                     <Card withBorder radius="md" className={classes.card}>
                         <Group position="apart">
                             <Text className={classes.title}>Add/remove fields</Text>
@@ -352,7 +352,7 @@ const New = () => {
                         </SimpleGrid>
                     </Card>
                 </div>
-                <div className='w-1/3'>
+                <div className='lg:w-1/3 w-[90%] mx-auto lg:mx-0 mt-6 lg:mt-0' >
                     <span className='font-bold'>Preview:</span>
                     <BadgeCard image={watchimgUrl} name={watchname} title={watchtitle} logo={watchlogoUrl} company={watchcompany} color={null} phone={watchphone} email={watchemail} address={watchaddress} websitelink={watchwebsitelink} link={watchlink} github={watchgithub} twitter={watchtwitter} instagram={watchinstagram} linkedin={watchlinkedin} facebook={watchfacebook} youtube={watchyoutube} whatsapp={watchwhatsapp} />
                 </div>
