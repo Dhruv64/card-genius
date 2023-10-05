@@ -1,5 +1,6 @@
 import type { NextPage } from "next";
-import {Link} from "react-scroll";
+// import { Link } from "react-scroll";
+import Link from "next/link";
 
 const Footer: NextPage = () => {
   return (
@@ -19,13 +20,15 @@ const Footer: NextPage = () => {
               <h2 className="title-font lg:font-medium text-white tracking-widest text-lg  mb-3">Card Genius</h2>
               <nav className="list-none mb-10">
                 <li>
-                  <p className="text-white hover:text-gray-800"><Link to='Features' smooth={true} offset={-60}>Product Features</Link></p>
+                  <p className="text-white hover:text-gray-800">{/* <Link to='Features' smooth={true} offset={-60}> */}Product Features{/* </Link> */}</p>
                 </li>
                 <li>
-                  <p className="text-white hover:text-gray-800"><Link to='About' smooth={true} offset={-60}>About Us</Link></p>
+                  <p className="text-white hover:text-gray-800">{/* <Link to='About' smooth={true} offset={-60}> */}About Us{/* </Link> */}</p>
                 </li>
                 <li>
-                  <a className="text-white hover:text-gray-800">Blog</a>
+                  <p className="text-white hover:text-gray-800"><Link href='/app/policy'>Privacy Policy</Link></p>
+
+                  {/* <a className="text-white hover:text-gray-800">Blog</a> */}
                 </li>
                 {/* <li>
                   <a className="text-white hover:text-gray-800">Login</a>
